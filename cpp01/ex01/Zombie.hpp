@@ -6,7 +6,7 @@
 /*   By: alejandrocamargo <acamargo@student.42.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:40:08 by alejandrocama     #+#    #+#             */
-/*   Updated: 2026/02/03 15:52:37 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:10:34 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #define ZOMBIE_HPP
 
 # include <string>
+
+# include <iostream>
 
 class	Zombie
 {
@@ -35,4 +37,6 @@ private:
 Zombie	*newZombie(std::string name);
 
 void	randomChump(std::string name);
+
+Zombie	*zombieHorde(int N, std::string name);
 #endif
