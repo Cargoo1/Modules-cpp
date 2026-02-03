@@ -6,7 +6,7 @@
 /*   By: alejandrocamargo <acamargo@student.42.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:40:08 by alejandrocama     #+#    #+#             */
-/*   Updated: 2026/02/03 12:46:38 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/02/03 15:52:37 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,23 @@
 
 # include <string>
 
-# include <iostream>
-
 class	Zombie
 {
 public:
 
-	Zombie(std::string name);
+	Zombie(void);
 	~Zombie(void);
-	void	announce(void);
-	Zombie	*newZombie(std::string name);
-	void	randomChump(std::string name);
+	void			announce(void);
+	Zombie			*newZombie(std::string name);
+	void			randomChump(std::string name);
+	bool			setName(std::string name);
+	std::string&	getName(void);
 private:
 
 	std::string	_name;
 };
 
+Zombie	*newZombie(std::string name);
+
+void	randomChump(std::string name);
 #endif
