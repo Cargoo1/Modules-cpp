@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alejandrocamargo <acamargo@student.42.fr>  +#+  +:+       +#+        */
+/*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 12:53:27 by alejandrocama     #+#    #+#             */
-/*   Updated: 2026/02/04 17:52:15 by acamargo         ###   ########.fr       */
+/*   Created: 2026/02/04 18:33:42 by acamargo          #+#    #+#             */
+/*   Updated: 2026/02/04 22:04:35 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Zombie.hpp"
+#ifndef WEAPON_HPP
 
-# include <cstddef>
+#define WEAPON_HPP
 
-# define HORDE_SIZE 10
+# include <string>
 
-int	main(void)
+class	Weapon
 {
-	Zombie	*heap_zombie;
+public:
+	Weapon(std::string str);
+	~Weapon(void);
+	bool	setType(std::string type);
+	const std::string&	getType(void);
+private:
+	std::string	_type;
+};
 
-	heap_zombie = zombieHorde(HORDE_SIZE, "lol");
-	for (size_t i = 0; i < HORDE_SIZE; i++)
-		heap_zombie[i].announce();
-	delete [] heap_zombie;
-}
+#endif
