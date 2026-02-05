@@ -1,16 +1,15 @@
 SRCS = main.cpp
-INCLUDES =
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
-CFLAGS = -Werror -Wall -Wextra -std=c++98 -g3
-NAME = violence
+CFLAGS = -Werror -Wall -Wextra -std=c++98
+NAME = mySed
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
 
-$(OBJS): $(SRCS) $(INCLUDES)
+$(OBJS): $(SRCS)
 	$(CC) $(CFLAGS) -c $(SRCS)
 
 clean:
