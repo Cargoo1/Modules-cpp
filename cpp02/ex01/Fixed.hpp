@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:27:37 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/11 17:26:10 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:20:42 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,27 @@
 
 # define FIXED_HPP
 
+#include <ostream>
 class	Fixed
 {
 public:
 	Fixed(void);
-	Fixed(Fixed const & fixedValue);
+	Fixed(Fixed const &fixedValue);
 	Fixed(int const int_value);
 	Fixed(float const float_value);
 	~Fixed(void);
 	Fixed&	operator=(Fixed const & fixedValue);
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
+	float	toFloat(void) const;
+	int		toInt(void) const;
 
 private:
 	int					_fixedValue;
 	static int const	_numFractionalBits;
 
 };
+
+std::ostream	&operator<<(std::ostream &o, Fixed const &value);
 
 #endif
