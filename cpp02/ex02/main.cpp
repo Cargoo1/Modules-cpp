@@ -6,27 +6,27 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 17:32:56 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/12 20:52:17 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:36:08 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Fixed.hpp"
 # include <iostream>
+#include <ostream>
 
 int	main(void)
 {
 	Fixed	a;
 	Fixed	b(10);
-	Fixed	c(10000000000.42f);
-	Fixed	d(b);
+	Fixed	c(0.2f);
+	Fixed	d(0.1f);
 
-	a = Fixed(-1234.4321f);
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	Fixed	e = c + d;
+	float	test = 0.0f + 1.0f / (1 << 8);
+	std::cout << e << '\n';
+	e = c - d;
+	std::cout << e << '\n';
+	e = c * d;
+	std::cout << e << '\n';
+	std::cout << test << '\n';
 }

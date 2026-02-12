@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:27:37 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/12 20:20:42 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:47:47 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ public:
 	Fixed(int const int_value);
 	Fixed(float const float_value);
 	~Fixed(void);
-	Fixed&	operator=(Fixed const & fixedValue);
+	Fixed&	operator=(Fixed const & other);
+	Fixed	operator+(Fixed const & other);
+	Fixed	operator-(Fixed const & other);
+	Fixed	operator*(Fixed const & other);
+	Fixed	operator/(Fixed const & other);
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 	float	toFloat(void) const;

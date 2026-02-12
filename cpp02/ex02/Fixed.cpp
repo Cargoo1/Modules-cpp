@@ -6,14 +6,15 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:35:09 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/12 20:35:02 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:47:05 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Fixed.hpp"
-# include <cmath>
-# include <iostream>
 
+# include <cmath>
+
+# include <iostream>
 
 Fixed::Fixed(void) : _fixedValue(0)
 {
@@ -41,7 +42,6 @@ Fixed::Fixed(Fixed const & fixedValue)
 	return;
 }
 
-
 Fixed::~Fixed(void)
 {
 	std::cout << "Descructor called" << std::endl;
@@ -67,19 +67,6 @@ float	Fixed::toFloat(void) const
 int		Fixed::toInt(void) const
 {
 	return (this->_fixedValue >> Fixed::_numFractionalBits);
-}
-
-Fixed&	Fixed::operator=(Fixed const & new_value)
-{
-	std::cout << "Copy assigment operation called" << std::endl;
-	this->_fixedValue = new_value.getRawBits();
-	return *this;
-}
-
-std::ostream	&operator<<(std::ostream &o, Fixed const &value)
-{
-	o << value.toFloat();
-	return (o);
 }
 
 int	const Fixed::_numFractionalBits = 8;
