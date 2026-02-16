@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 21:45:26 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/12 23:05:48 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/14 04:51:22 by alejandrocama    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,83 @@ Fixed	Fixed::operator*(Fixed const &other)
 
 Fixed	Fixed::operator/(Fixed const &other)
 {
-	if (other)
-	return (F)
+	if (other.toFloat() <= (1.0f / (1 << Fixed::_numFractionalBits)))
+		return (Fixed(this->toFloat()));
+	return (Fixed(this->toFloat() / other.toFloat()));
+}
+
+bool	Fixed::operator>(Fixed const &other) const
+{
+	if (this->getRawBits() > other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator<(Fixed const &other) const
+{
+	if (this->getRawBits() < other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator>=(Fixed const &other) const
+{
+	if (this->getRawBits() > other.getRawBits())
+		return (true);
+	else if (this->getRawBits() == other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator<=(Fixed const &other) const
+{
+	if (this->getRawBits() < other.getRawBits())
+		return (true);
+	else if (this->getRawBits() == other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator==(Fixed const &other) const
+{
+	if (this->getRawBits() == other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator!=(Fixed const &other) const
+{
+	if (this->getRawBits() != other.getRawBits())
+		return (true);
+	return (false);
+}
+
+Fixed&	Fixed::operator++(void)
+{
+	*this = Fixed(this->toFloat() + EPSILON);
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	temp(*this);
+
+	*this = Fixed(this->toFloat() + EPSILON);
+	return (temp);
+}
+
+Fixed&	Fixed::operator--(void)
+{
+	*this = Fixed(this->toFloat() - EPSILON);
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	temp(*this);
+
+	*this = Fixed(this->toFloat() - EPSILON);
+	return (temp);
 }
 
 std::ostream	&operator<<(std::ostream &o, Fixed const &value)
@@ -57,4 +132,3 @@ std::ostream	&operator<<(std::ostream &o, Fixed const &value)
 	o << value.toFloat();
 	return (o);
 }
-

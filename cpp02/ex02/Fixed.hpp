@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:27:37 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/12 22:47:47 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/14 05:01:19 by alejandrocama    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 # define FIXED_HPP
 
+#include <algorithm>
 #include <ostream>
+
+# define EPSILON 1.0f / (1 << Fixed::_numFractionalBits)
+
 class	Fixed
 {
 public:
@@ -28,6 +32,20 @@ public:
 	Fixed	operator-(Fixed const & other);
 	Fixed	operator*(Fixed const & other);
 	Fixed	operator/(Fixed const & other);
+	bool	operator>(Fixed const & other) const;
+	bool	operator<(Fixed const & other) const;
+	bool	operator>=(Fixed const & other) const;
+	bool	operator<=(Fixed const & other) const;
+	bool	operator==(Fixed const & other) const;
+	bool	operator!=(Fixed const & other) const;
+	Fixed&	operator++(void);
+	Fixed	operator++(int);
+	Fixed&	operator--(void);
+	Fixed	operator--(int);
+	static	Fixed& min(Fixed &lhs, Fixed &rhs);
+	static	Fixed& max(Fixed &lhs, Fixed &rhs);
+	static	Fixed const & min(Fixed const &lhs, Fixed const &rhs);
+	static	Fixed const & max(Fixed const &lhs, Fixed const &rhs);
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 	float	toFloat(void) const;

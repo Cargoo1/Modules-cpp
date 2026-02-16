@@ -1,4 +1,4 @@
-SRCS = main.cpp Fixed.cpp FixedOverloads.cpp
+SRCS = main.cpp Fixed.cpp FixedOverloads.cpp FixedOverloadFunctions.cpp
 INCLUDES = Fixed.hpp
 CFLAGS = -Werror -Wall -Wextra -std=c++98
 OBJS = ${SRCS:.cpp=.o}
