@@ -1,8 +1,8 @@
-SRCS = main.cpp Fixed.cpp FixedOverloads.cpp FixedOverloadFunctions.cpp
-INCLUDES = Fixed.hpp
-CFLAGS = -Werror -Wall -Wextra -std=c++98
+SRCS = main.cpp Fixed.cpp FixedOverloads.cpp FixedOverloadFunctions.cpp Point.cpp Bsp.cpp
+INCLUDES = Fixed.hpp Point.hpp
+CFLAGS = -Werror -Wall -Wextra -std=c++98 -g3
 OBJS = ${SRCS:.cpp=.o}
-NAME = Fixed-point
+NAME = bsp
 
 all: $(NAME)
 
