@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:27:37 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/14 05:01:19 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/02/16 21:33:48 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 # define FIXED_HPP
 
-#include <algorithm>
 #include <ostream>
 
 # define EPSILON 1.0f / (1 << Fixed::_numFractionalBits)
@@ -28,10 +27,10 @@ public:
 	Fixed(float const float_value);
 	~Fixed(void);
 	Fixed&	operator=(Fixed const & other);
-	Fixed	operator+(Fixed const & other);
-	Fixed	operator-(Fixed const & other);
-	Fixed	operator*(Fixed const & other);
-	Fixed	operator/(Fixed const & other);
+	Fixed	operator+(Fixed const & other) const;
+	Fixed	operator-(Fixed const & other) const;
+	Fixed	operator*(Fixed const & other) const;
+	Fixed	operator/(Fixed const & other) const;
 	bool	operator>(Fixed const & other) const;
 	bool	operator<(Fixed const & other) const;
 	bool	operator>=(Fixed const & other) const;

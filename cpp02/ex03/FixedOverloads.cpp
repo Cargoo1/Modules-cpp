@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 21:45:26 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/14 04:51:22 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/02/16 21:33:42 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Fixed&	Fixed::operator=(Fixed const & new_value)
 	return *this;
 }
 
-Fixed	Fixed::operator+(Fixed const &other)
+Fixed	Fixed::operator+(Fixed const &other) const
 {
 	Fixed	result;
 	int		rawBits;
@@ -31,7 +31,7 @@ Fixed	Fixed::operator+(Fixed const &other)
 	return (result);
 }
 
-Fixed	Fixed::operator-(Fixed const &other)
+Fixed	Fixed::operator-(Fixed const &other) const
 {
 	Fixed	result;
 	int		rawBits;
@@ -41,12 +41,12 @@ Fixed	Fixed::operator-(Fixed const &other)
 	return (result);
 }
 
-Fixed	Fixed::operator*(Fixed const &other)
+Fixed	Fixed::operator*(Fixed const &other) const
 {
 	return (Fixed(this->toFloat() * other.toFloat()));
 }
 
-Fixed	Fixed::operator/(Fixed const &other)
+Fixed	Fixed::operator/(Fixed const &other) const
 {
 	if (other.toFloat() <= (1.0f / (1 << Fixed::_numFractionalBits)))
 		return (Fixed(this->toFloat()));
