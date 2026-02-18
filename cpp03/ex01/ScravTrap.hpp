@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScravTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acamargo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/17 14:25:13 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/17 14:26:00 by acamargo         ###   ########.fr       */
+/*   Created: 2026/02/18 16:43:49 by acamargo          #+#    #+#             */
+/*   Updated: 2026/02/18 16:47:49 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,21 @@
 
 #define SCRAVTRAP_HPP
 
-class	ScravTrap
-{
+# include "ClapTrap.hpp"
 
-}
+class	ScravTrap : public ClapTrap
+{
+public:
+	ScravTrap(void);
+	ScravTrap(std::string const & name);
+	ScravTrap(ScravTrap const & other);
+	~ScravTrap(void);
+
+	ScravTrap&	operator=(ScravTrap const & other);
+	
+	void	guardGate(void);
+	void	attack(std::string const & target);
+
+};
 
 #endif

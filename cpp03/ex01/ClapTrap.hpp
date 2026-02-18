@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 12:23:51 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/17 13:51:15 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:01:32 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
-private:
+protected:
 	std::string		_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;

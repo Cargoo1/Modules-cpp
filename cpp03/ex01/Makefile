@@ -1,8 +1,8 @@
-SRCS = main.cpp ClapTrap.cpp
-INCLUDES = ClapTrap.hpp
+SRCS = main.cpp ClapTrap.cpp ScravTrap.cpp
+INCLUDES = ClapTrap.hpp ScravTrap.hpp
 CFLAGS = -Werror -Wall -Wextra -std=c++98 -g3
 OBJS = ${SRCS:.cpp=.o}
-NAME = Claptrap
+NAME = ScravTrap
 
 all: $(NAME)
 
