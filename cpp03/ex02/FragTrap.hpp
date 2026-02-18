@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/17 12:44:23 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/18 16:02:15 by acamargo         ###   ########.fr       */
+/*   Created: 2026/02/18 16:12:50 by acamargo          #+#    #+#             */
+/*   Updated: 2026/02/18 16:34:26 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScravTrap.hpp"
+#ifndef FRAGTRAP_HPP
 
-#include <iostream>
+#define FRAGTRAP_HPP
 
-int	main(void)
+# include "ClapTrap.hpp"
+
+class	FragTrap : public ClapTrap
 {
-	ScravTrap	scrav("Cargoo");
-	scrav.attack("LOL");
-	scrav.takeDamage(99);
-	std::cout << scrav.getHitPoints() << '\n';
-	scrav.beRepaired(1);
-	scrav.attack("LOL");
-	scrav.takeDamage(1);
-	std::cout << scrav.getHitPoints() << '\n';
-	scrav.guardGate();
-}
+public:
+	FragTrap(void);
+	FragTrap(std::string const & name);
+	FragTrap(FragTrap const & other);
+	~FragTrap(void);
+
+	FragTrap&	operator=(FragTrap const & other);
+
+	void	attack(std::string const & target);
+	void	highFivesGuys(void);
+};
+
+#endif

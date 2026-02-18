@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScravTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/17 12:44:23 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/18 16:02:15 by acamargo         ###   ########.fr       */
+/*   Created: 2026/02/18 16:43:49 by acamargo          #+#    #+#             */
+/*   Updated: 2026/02/18 18:02:01 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScravTrap.hpp"
+#ifndef SCRAVTRAP_HPP
 
-#include <iostream>
+#define SCRAVTRAP_HPP
 
-int	main(void)
+# include "ClapTrap.hpp"
+
+class	ScravTrap : virtual public ClapTrap
 {
-	ScravTrap	scrav("Cargoo");
-	scrav.attack("LOL");
-	scrav.takeDamage(99);
-	std::cout << scrav.getHitPoints() << '\n';
-	scrav.beRepaired(1);
-	scrav.attack("LOL");
-	scrav.takeDamage(1);
-	std::cout << scrav.getHitPoints() << '\n';
-	scrav.guardGate();
-}
+public:
+	ScravTrap(void);
+	ScravTrap(std::string const & name);
+	ScravTrap(ScravTrap const & other);
+	~ScravTrap(void);
+
+	ScravTrap&	operator=(ScravTrap const & other);
+	
+	void	guardGate(void);
+	void	attack(std::string const & target);
+
+};
+
+#endif
