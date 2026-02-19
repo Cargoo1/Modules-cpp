@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 13:45:49 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/18 18:16:12 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/19 19:42:56 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	ScravTrap::guardGate(void)
 {
 	if (!is_able_to_interact())
 		return ;
-	std::cout << "ScravTrap is now in Gate keeper mode\n";
+	std::cout << "ScravTrap " + this->_name + " is now in Gate keeper mode\n";
 	return ;
 }

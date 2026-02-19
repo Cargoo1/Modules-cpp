@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 12:23:51 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/18 14:01:32 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/19 19:41:18 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ public:
 	bool	setHitPoints(unsigned int amount);
 	bool	setEnergyPoints(unsigned int amount);
 	bool	setAttackDamage(unsigned int amount);
-	bool	is_able_to_interact(void);
 	void	attack(std::string const & target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
 protected:
 	std::string		_name;
+	bool	is_able_to_interact(void);
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;

@@ -6,16 +6,17 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 12:44:23 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/18 18:14:07 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/19 19:44:21 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
-# include "FragTrap.hpp"
 
 int	main(void)
 {
 	DiamondTrap	test("Cargo");
-	test.attack("S");
+	test.attack("enemy");
 	test.whoAmi();
+	test.guardGate();
+	test.highFivesGuys();
 }
