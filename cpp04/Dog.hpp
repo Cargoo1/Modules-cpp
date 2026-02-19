@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/17 12:44:23 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/19 19:44:21 by acamargo         ###   ########.fr       */
+/*   Created: 2026/02/19 20:42:59 by acamargo          #+#    #+#             */
+/*   Updated: 2026/02/19 22:04:12 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+# ifndef DOG_HPP
 
-int	main(void)
+# define DOG_HPP
+
+# include "Animal.hpp"
+
+class	Dog : public Animal
 {
-	DiamondTrap	test("Cargo");
-	test.attack("enemy");
-	test.whoAmi();
-	test.guardGate();
-	test.highFivesGuys();
-}
+public:
+	Dog(void);
+	Dog(Dog const & other);
+	~Dog(void);
+
+	Dog& operator=(Dog const & other);
+
+	std::string const&	getType(void) const;
+	void	makeSound(void);
+};
+
+# endif

@@ -5,18 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/17 12:44:23 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/19 19:44:21 by acamargo         ###   ########.fr       */
+/*   Created: 2026/02/19 20:53:51 by acamargo          #+#    #+#             */
+/*   Updated: 2026/02/19 22:16:47 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#include "Animal.hpp"
+# include "Cat.hpp"
+#include "Dog.hpp"
+
+# include <iostream>
 
 int	main(void)
 {
-	DiamondTrap	test("Cargo");
-	test.attack("enemy");
-	test.whoAmi();
-	test.guardGate();
-	test.highFivesGuys();
+	Animal	*cat = new Cat();
+	Animal	test;
+	Animal	*dog = new Dog();
+
+	test.makeSound();
+	cat->makeSound();
+	dog->makeSound();
+	std::cout << cat->getType() + '\n';
+	std::cout << dog->getType() + '\n';
+	std::cout << test.getType() + '\n';
+	delete cat;
+	delete dog;
+	Cat	a;
 }

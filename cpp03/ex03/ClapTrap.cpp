@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 12:49:07 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/18 15:57:49 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:49:57 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ ClapTrap::ClapTrap(std::string const & name) : _name(name),
 											_attackDamage(0)
 {
 	std::cout << "ClapTrap constructor with parameters called\n";
+	std::cout << _name + '\n';
 	return ;
 }
 

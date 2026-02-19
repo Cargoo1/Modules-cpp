@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/17 12:44:23 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/19 19:44:21 by acamargo         ###   ########.fr       */
+/*   Created: 2026/02/19 20:12:01 by acamargo          #+#    #+#             */
+/*   Updated: 2026/02/19 22:04:19 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+# ifndef ANIMAL_HPP
 
-int	main(void)
+# define ANIMAL_HPP
+
+# include <string>
+
+class	Animal
 {
-	DiamondTrap	test("Cargo");
-	test.attack("enemy");
-	test.whoAmi();
-	test.guardGate();
-	test.highFivesGuys();
-}
+public:
+	Animal(void);
+	Animal(Animal const & other);
+	virtual ~Animal(void);
+
+	Animal&	operator=(Animal const & other);
+
+	virtual	void	makeSound(void);
+	virtual std::string const&	getType(void) const;
+protected:
+	std::string	_type;
+};
+
+# endif
