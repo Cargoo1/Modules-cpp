@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 21:40:44 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 21:51:18 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/21 18:45:08 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	Ice&	operator=(Ice const & other);
 
 	AMateria	*clone(void);
-	void		use(ICharacter& target);
+	virtual void		use(ICharacter& target);
 };
 
 #endif

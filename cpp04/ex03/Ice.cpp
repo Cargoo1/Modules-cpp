@@ -6,11 +6,13 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 21:44:15 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 21:52:16 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/21 20:25:38 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Ice.hpp"
+
+# include "AMateria.hpp"
 
 # include <iostream>
 
@@ -37,7 +39,7 @@ Ice&	Ice::operator=(Ice const & other)
 	return (*this);
 }
 
-AMateria	*AMateria::clone(void)
+AMateria	*Ice::clone(void)
 {
 	AMateria	*newMateria;
 
@@ -45,8 +47,8 @@ AMateria	*AMateria::clone(void)
 	return (newMateria);
 }
 
-void	AMateria::use(ICharacter& target)
+void	Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " + target.getName() + '\n';
+	std::cout << "* shoots an ice bolt at " + target.getName() + " *\n";
 	return ;
 }

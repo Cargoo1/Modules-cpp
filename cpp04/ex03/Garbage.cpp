@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:34 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/21 00:37:54 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/21 21:15:41 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,13 @@ Garbage::Garbage(Garbage const & other) : _size(0), _index(0), _trashcan(NULL)
 	this->_trashcan = new AMateria*[other._size];
 	for (size_t i = 0; i < other._size; i++)
 		this->_trashcan[i] = NULL;
+	if (!other._index)
+		return ;
 	for (size_t i = 0; i <= other._index; i++)
-		this->_trashcan[i] = other._trashcan[i]->clone();
+	{
+		if (other._trashcan[i])
+			this->_trashcan[i] = other._trashcan[i]->clone();
+	}
 	return ;
 }
 
@@ -45,9 +50,10 @@ Garbage::~Garbage(void)
 
 void	Garbage::flush(void)
 {
-	for (size_t i = 0; i < this->_size; i++)
+	for (size_t i = 0; i <= this->_index; i++)
 	{
-		delete this->_trashcan[i];
+		if (this->_trashcan[i])
+			delete this->_trashcan[i];
 		this->_trashcan[i] = NULL;
 	}
 	if (this->_trashcan)

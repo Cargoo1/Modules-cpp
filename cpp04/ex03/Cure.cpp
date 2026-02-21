@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 21:55:01 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 22:02:47 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/21 18:51:29 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Cure&	Cure::operator=(Cure const & other)
 	return (*this);
 }
 
-AMateria	*AMateria::clone(void)
+AMateria	*Cure::clone(void)
 {
 	AMateria	*newMateria;
 
@@ -45,7 +45,7 @@ AMateria	*AMateria::clone(void)
 	return (newMateria);
 }
 
-void	AMateria::use(ICharacter& target)
+void	Cure::use(ICharacter& target)
 {
 	std::cout << "* heals " + target.getName() + "'s wounds *\n";
 	return ;
