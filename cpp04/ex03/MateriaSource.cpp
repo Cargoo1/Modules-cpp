@@ -6,12 +6,14 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 18:21:25 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/21 21:41:10 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:42:35 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "MateriaSource.hpp"
 #include "AMateria.hpp"
+
+# include <iostream>
 
 MateriaSource::MateriaSource(void)
 {
@@ -59,7 +61,10 @@ void	MateriaSource::learnMateria(AMateria *m)
 	while (i < MAX_TEMPLATES && this->_templates[i])
 		i++;
 	if (i >= MAX_TEMPLATES)
+	{
+		std::cout << "The materia source does not have any more templates slots\n";
 		return ;
+	}
 	this->_templates[i] = m;
 	return ;
 }
@@ -76,6 +81,9 @@ AMateria	*MateriaSource::createMateria(std::string const &type)
 		idx++;
 	}
 	if (idx >= MAX_TEMPLATES)
+	{
+		std::cout << "Materia type not found, imposible to create one\n";
 		return (NULL);
+	}
 	return (this->_templates[idx]->clone());
 }

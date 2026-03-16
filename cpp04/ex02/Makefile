@@ -1,5 +1,5 @@
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
-INCLUDES = Animal.hpp Cat.hpp Dog.hpp Brain.hpp
+SRCS = main.cpp AAnimal.cpp Cat.cpp Dog.cpp Brain.cpp
+INCLUDES = AAnimal.hpp Cat.hpp Dog.hpp Brain.hpp
 CFLAGS = -Werror -Wall -Wextra -std=c++98 -g3
 OBJS = ${SRCS:.cpp=.o}
 NAME = animal

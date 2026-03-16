@@ -1,39 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.cpp                                        :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/19 20:39:19 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/12 21:55:09 by acamargo         ###   ########.fr       */
+/*   Created: 2026/03/12 20:40:45 by acamargo          #+#    #+#             */
+/*   Updated: 2026/03/12 20:41:42 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "AAnimal.hpp"
+# include "WrongCat.hpp"
 
 # include <iostream>
 
-AAnimal::AAnimal(void) : _type("???")
+WrongCat::WrongCat(void)
 {
-	std::cout << "Animal constructor called\n";
+	std::cout << "WrongCat constructor called\n";
+	this->_type = "WrongCat";
 	return ;
 }
 
-AAnimal::AAnimal(AAnimal const & other)
+WrongCat::WrongCat(WrongCat const & other)
 {
-	std::cout << "Animal copy constructor called\n";
+	std::cout << "WrongCat copy constructor called\n";
 	*this = other;
-}
-
-AAnimal::~AAnimal(void)
-{
-	std::cout << "Animal destructor called\n";
 	return ;
 }
 
-AAnimal&	AAnimal::operator=(AAnimal const & other)
+WrongCat::~WrongCat(void)
+{
+	std::cout << "WrongCat destructor called\n";
+	return ;
+}
+
+WrongCat&	WrongCat::operator=(WrongCat const & other)
 {
 	this->_type = other._type;
 	return (*this);
 }
+
+std::string const&	WrongCat::getType(void) const
+{
+	return (this->_type);
+}
+
+void	WrongCat::makeSound(void) const
+{
+	std::cout << "Meow\n";
+}
+

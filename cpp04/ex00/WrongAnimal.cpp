@@ -1,57 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/19 20:39:19 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/12 21:07:21 by acamargo         ###   ########.fr       */
+/*   Created: 2026/03/12 20:39:34 by acamargo          #+#    #+#             */
+/*   Updated: 2026/03/12 20:40:17 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Animal.hpp"
+
+# include "WrongAnimal.hpp"
 
 # include <iostream>
 
-Animal::Animal(void) : _type("???")
+WrongAnimal::WrongAnimal(void) : _type("???")
 {
-	std::cout << "Animal constructor called\n";
+	std::cout << "WrongAnimal constructor called\n";
 	return ;
 }
 
-Animal::Animal(Animal const & other)
+WrongAnimal::WrongAnimal(WrongAnimal const & other)
 {
-	std::cout << "Animal copy constructor called\n";
+	std::cout << "WrongAnimal copy constructor called\n";
 	*this = other;
 }
 
-Animal::~Animal(void)
+WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "Animal destructor called\n";
+	std::cout << "WrongAnimal destructor called\n";
 	return ;
 }
 
-Animal&	Animal::operator=(Animal const & other)
+WrongAnimal&	WrongAnimal::operator=(WrongAnimal const & other)
 {
 	this->_type = other._type;
 	return (*this);
 }
 
-void	Animal::makeSound(void) const
+void	WrongAnimal::makeSound(void) const
 {
 	std::cout << "???\n";
 	return ;
 }
 
-std::string const&	Animal::getType(void) const
+std::string const&	WrongAnimal::getType(void) const
 {
 	return (this->_type);
-}
-
-bool	Animal::setBrain(std::string const &idea, int idx)
-{
-	(void)idea;
-	(void)idx;
-	return (true);
 }

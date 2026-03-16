@@ -6,38 +6,38 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:34 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/21 21:15:41 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:39:12 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 # include "Garbage.hpp"
+#include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-Garbage::Garbage(void) : _size(0), _index(0), _trashcan(NULL)
+Garbage::Garbage(void) : _capacity(INVENTORY_SIZE), _lenght(0), _elements(new AMateria*[INVENTORY_SIZE])
 {
+	for (size_t i = 0; i < this->_capacity; i++)
+		this->_elements[i] = NULL;
 	return ;
 }
 
-Garbage::Garbage(size_t size) : _size(size), _index(0), _trashcan(new AMateria*[size])
+Garbage::Garbage(size_t size) : _capacity(size), _lenght(0), _elements(new AMateria*[size])
 {
-	for (size_t i = 0; i < this->_size; i++)
-		this->_trashcan[i] = NULL;
+	for (size_t i = 0; i < this->_capacity; i++)
+		this->_elements[i] = NULL;
 	return ;
 }
 
-Garbage::Garbage(Garbage const & other) : _size(0), _index(0), _trashcan(NULL)
+Garbage::Garbage(Garbage const & other) : _capacity(other._capacity), _lenght(other._lenght), _elements(NULL)
 {
-	this->_index = other._index;
-	this->_size = other._size;
-	this->_trashcan = new AMateria*[other._size];
-	for (size_t i = 0; i < other._size; i++)
-		this->_trashcan[i] = NULL;
-	if (!other._index)
-		return ;
-	for (size_t i = 0; i <= other._index; i++)
+	this->_elements = new AMateria*[this->_capacity];
+	for (size_t i = 0; i < this->_capacity; i++)
+		this->_elements[i] = NULL;
+	for (size_t i = 0; i < this->_lenght; i++)
 	{
-		if (other._trashcan[i])
-			this->_trashcan[i] = other._trashcan[i]->clone();
+		if (other._elements[i])
+			this->_elements[i] = other._elements[i]->clone();
 	}
 	return ;
 }
@@ -50,16 +50,19 @@ Garbage::~Garbage(void)
 
 void	Garbage::flush(void)
 {
-	for (size_t i = 0; i <= this->_index; i++)
+	for (size_t i = 0; i < this->_lenght; i++)
 	{
-		if (this->_trashcan[i])
-			delete this->_trashcan[i];
-		this->_trashcan[i] = NULL;
+		std::cout << "i: " << i << "\n";
+		std::cout << "capacity: " << _capacity << "\n";
+		std::cout << "_lenght: " << _lenght << "\n";
+		if (this->_elements[i])
+			delete this->_elements[i];
+		this->_elements[i] = NULL;
 	}
-	if (this->_trashcan)
-		delete [] this->_trashcan;
-	this->_index = 0;
-	this->_size = 0;
+	if (this->_elements)
+		delete [] this->_elements;
+	this->_lenght = 0;
+	this->_capacity = 0;
 }
 
 Garbage&	Garbage::operator=(Garbage const & other)
@@ -75,24 +78,25 @@ void	Garbage::add(AMateria *m)
 {
 	AMateria	**temp_trash;
 
-	if (this->_index != this->_size)
+	if (this->_lenght != this->_capacity)
 	{
-		this->_trashcan[this->_index++] = m;
+		std::cout << "Adding elements to Garbage\n";
+		this->_elements[this->_lenght] = m;
+		this->_lenght++;
 		return ;
 	}
-	if (!this->_trashcan)
+	std::cout << "Reallocating Garbage\n";
+	temp_trash = this->_elements;
+	this->_capacity = this->_capacity + INVENTORY_SIZE;
+	this->_elements = new AMateria*[this->_capacity];
+	for (size_t i = 0; i < this->_lenght; i++)
 	{
-		this->_size = INVENTORY_SIZE;
-		this->_trashcan = new AMateria*[this->_size];
-		this->_trashcan[this->_index++] = m;
-		return ;
+		this->_elements[i] = NULL;
+		if (temp_trash[i])
+			this->_elements[i] = temp_trash[i];
 	}
-	temp_trash = this->_trashcan;
-	this->_size = this->_size + INVENTORY_SIZE;
-	this->_trashcan = new AMateria*[this->_size];
-	for (size_t i = 0; i < this->_index; i++)
-		this->_trashcan[i] = temp_trash[i];
-	delete [] temp_trash;
-	this->_trashcan[this->_index++] = m;
+	delete []temp_trash;
+	this->_elements[this->_lenght] = m;
+	this->_lenght++;
 	return ;
 }

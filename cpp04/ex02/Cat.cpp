@@ -6,15 +6,16 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 20:45:28 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 18:52:54 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/12 21:24:25 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Cat.hpp"
-
 #include "Brain.hpp"
 
+#include <cstdlib>
 # include <iostream>
+#include <new>
 
 Cat::Cat(void)
 {
@@ -27,8 +28,8 @@ Cat::Cat(void)
 Cat::Cat(Cat const & other)
 {
 	std::cout << "Cat copy constructor called\n";
-	this->_myBrain = new Brain();
-	*this = other;
+	this->_type = other._type;
+	this->_myBrain = new Brain(*other._myBrain);
 	return ;
 }
 
@@ -41,8 +42,10 @@ Cat::~Cat(void)
 
 Cat&	Cat::operator=(Cat const & other)
 {
-	this->_type = other._type;
-	*this->_myBrain = *other._myBrain;
+	if (this == &other)
+		return (*this);
+	this->~Cat();
+	new(this) Cat(other);
 	return (*this);
 }
 

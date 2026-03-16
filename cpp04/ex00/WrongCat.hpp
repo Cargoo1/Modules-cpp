@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/20 16:58:48 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/12 21:19:48 by acamargo         ###   ########.fr       */
+/*   Created: 2026/03/12 20:30:02 by acamargo          #+#    #+#             */
+/*   Updated: 2026/03/12 20:39:14 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
+# ifndef WRONGCAT_HPP
 
-#define BRAIN_HPP
+# define WRONGCAT_HPP
 
 # include <string>
 
-class	Brain
+# include "WrongAnimal.hpp"
+
+class	WrongCat : public WrongAnimal
 {
 public:
-	Brain(void);
-	Brain(Brain const & other);
-	virtual ~Brain(void);
+	WrongCat(void);
+	WrongCat(WrongCat const & other);
+	virtual ~WrongCat(void);
 
-	Brain&	operator=(Brain const & other);
-	std::string	const *getIdeas(void) const;
-	bool	setIdeas(std::string const & idea, int idx);
-private:
-	std::string	_ideas[100];
+	WrongCat& operator=(WrongCat const & other);
+
+	std::string const&	getType(void) const;
+	void	makeSound(void) const;
 };
 
 #endif

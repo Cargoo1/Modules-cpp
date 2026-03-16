@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:23:08 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 23:43:51 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:21:53 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ public:
 	void	add(AMateria *m);
 	void	flush(void);
 private:
-	size_t		_size;
-	size_t		_index;
-	AMateria	**_trashcan;
+	size_t		_capacity;
+	size_t		_lenght;
+	AMateria	**_elements;
 };
 
 #endif
