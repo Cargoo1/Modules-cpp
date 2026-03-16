@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 20:33:18 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/21 19:45:16 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:47:44 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	ICharacter&	operator=(ICharacter const & other);
 	virtual	~ICharacter(void);
 	virtual std::string const & getName(void) const = 0;
+	virtual bool setName(std::string const & name) = 0;
 	virtual void	equip(AMateria *m) = 0;
 	virtual void	unequip(int idx) = 0;
 	virtual void	use(int idx, ICharacter& target) = 0;

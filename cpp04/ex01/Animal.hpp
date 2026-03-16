@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 20:12:01 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 16:51:23 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/12 21:06:19 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
 
 	virtual	void	makeSound(void) const;
 	virtual std::string const&	getType(void) const;
+	virtual	bool setBrain(std::string const &idea, int idx);
 protected:
 	std::string	_type;
 };

@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 21:09:44 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/21 21:22:32 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:41:53 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 Character::Character(void) : _Name("???"), _trashcan(INVENTORY_SIZE)
 {
-	std::cout << "Character default constructor called\n";
+	//std::cout << "Character default constructor called\n";
 	for (int i = 0; i < INVENTORY_SIZE; i++)
 		this->_inventory[i] = NULL;
 	return ;
@@ -27,7 +27,7 @@ Character::Character(void) : _Name("???"), _trashcan(INVENTORY_SIZE)
 
 Character::Character(std::string const &name) : _Name(name), _trashcan(INVENTORY_SIZE)
 {
-	std::cout << "Character parametrized constructor called\n";
+	//std::cout << "Character parametrized constructor called\n";
 	for (int i = 0; i < INVENTORY_SIZE; i++)
 		this->_inventory[i] = NULL;
 	return ;
@@ -35,7 +35,7 @@ Character::Character(std::string const &name) : _Name(name), _trashcan(INVENTORY
 
 Character::Character(Character const & other)
 {
-	std::cout << "Character copy constructor called\n";
+	//std::cout << "Character copy constructor called\n";
 	this->_Name = other._Name;
 	for (int i = 0; i < INVENTORY_SIZE; i++)
 		this->_inventory[i] = NULL;
@@ -44,7 +44,6 @@ Character::Character(Character const & other)
 		if (other._inventory[i])
 			this->_inventory[i] = other._inventory[i]->clone();
 	}
-	this->_trashcan = other._trashcan;
 	return ;
 }
 
@@ -55,13 +54,12 @@ Character::~Character(void)
 		if (this->_inventory[i])
 			delete this->_inventory[i];
 	}
-	//this->_trashcan.~Garbage();
 	return ;
 }
 
 Character&	Character::operator=(Character const & other)
 {
-	std::cout << "Character copy operator called\n";
+	//std::cout << "Character copy operator called\n";
 	if (this == &other)
 		return (*this);
 	this->~Character();
@@ -134,4 +132,12 @@ void	Character::unequip(int idx)
 std::string const &	Character::getName(void) const
 {
 	return (this->_Name);
+}
+
+bool	Character::setName(std::string const & name)
+{
+	if (name.empty())
+		return false;
+	this->_Name = name;
+	return true;
 }

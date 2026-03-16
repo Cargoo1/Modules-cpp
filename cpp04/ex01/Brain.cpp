@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 17:05:34 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 18:25:53 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/12 21:04:19 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,32 @@
 Brain::Brain(void)
 {
 	std::cout << "Brain default constructor called\n";
-	this->_ideas = new std::string[100];
+	for (int i = 0; i < 100; i++)
+		this->_ideas[i] = "Some idea...";
 	return ;
 }
 
 Brain::Brain(Brain const & other)
 {
 	std::cout << "Brain copy constructor called\n";
-	this->_ideas = new std::string[100];
-	*this = other;
+	for (int i = 0; i < 100; i++)
+	{
+		this->_ideas[i] = other._ideas[i];
+	}
 }
 
 Brain::~Brain(void)
 {
 	std::cout << "Brain destructor called\n";
-	delete [] this->_ideas;
 	return ;
 }
 
 Brain&	Brain::operator=(Brain const & other)
 {
-	for (int i = 0; i < 100; i++)
-	{
-		this->_ideas[i] = other._ideas[i];
-	}
+	if (this == &other)
+		return (*this);
+	this->~Brain();
+	new (this) Brain(other);
 	return (*this);
 }
 

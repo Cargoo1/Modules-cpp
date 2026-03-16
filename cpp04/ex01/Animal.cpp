@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 20:39:19 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 16:51:30 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/12 21:07:21 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,11 @@ void	Animal::makeSound(void) const
 std::string const&	Animal::getType(void) const
 {
 	return (this->_type);
+}
+
+bool	Animal::setBrain(std::string const &idea, int idx)
+{
+	(void)idea;
+	(void)idx;
+	return (true);
 }

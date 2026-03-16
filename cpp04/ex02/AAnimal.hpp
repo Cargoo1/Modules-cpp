@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 20:12:01 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/20 18:52:02 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/12 21:58:44 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define ANIMAL_HPP
 
 # include <string>
+
+# include "Brain.hpp"
 
 class	AAnimal
 {
@@ -27,6 +29,8 @@ public:
 
 	virtual	void	makeSound(void) const=0;
 	virtual std::string const&	getType(void) const=0;
+	virtual bool	setBrain(std::string const & idea, int idx) = 0;
+	virtual Brain*	getBrain(void) const = 0;
 protected:
 	std::string	_type;
 };

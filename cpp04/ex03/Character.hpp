@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 22:04:57 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/21 20:21:37 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:41:01 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ public:
 	void	unequip(int idx);
 	void	use(int idx, ICharacter& target);
 	std::string const &	getName(void) const;
+	bool	setName(std::string const & name);
 private:
 	std::string	_Name;
 	AMateria	*_inventory[INVENTORY_SIZE];
