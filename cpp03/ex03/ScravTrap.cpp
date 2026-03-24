@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 13:45:49 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/19 19:42:56 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:15:59 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ ScravTrap::ScravTrap(void) : ClapTrap()
 	return ;
 }
 
-ScravTrap::ScravTrap(std::string const & name)
+ScravTrap::ScravTrap(std::string const & name) : ClapTrap(name)
 {
 	std::cout << "ScravTrap constructor w paramaters called\n";
-	this->_name = name;
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;

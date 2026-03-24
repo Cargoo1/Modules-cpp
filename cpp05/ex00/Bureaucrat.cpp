@@ -6,25 +6,28 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 18:54:22 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/23 19:48:43 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:24:32 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include <ostream>
+#include <iostream>
 
 Bureaucrat::Bureaucrat(void) : _name("default?"), _grade(150)
 {
+	std::cout << "Bureaucrat constructor called\n";
 	return;
 }
 
 Bureaucrat::~Bureaucrat(void)
 {
+	std::cout << "Bureaucrat destructor called\n";
 	return ;
 }
 
 Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade) : _name(name)
 {
+	std::cout << "Bureaucrat constructor w parameters called\n";
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
@@ -54,6 +57,22 @@ const std::string & Bureaucrat::getName(void) const
 unsigned int	Bureaucrat::getGrade(void) const
 {
 	return this->_grade;
+}
+
+void	Bureaucrat::incrementGrade()
+{
+	if (this->_grade == 1)
+		throw Bureaucrat::GradeTooHighException();
+	this->_grade--;
+	std::cout << *this;
+}
+
+void	Bureaucrat::decrementGrade()
+{
+	if (this->_grade == 150)
+		throw Bureaucrat::GradeTooLowException();
+	this->_grade++;
+	std::cout << *this;
 }
 
 const char *	Bureaucrat::GradeTooHighException::what() const throw()

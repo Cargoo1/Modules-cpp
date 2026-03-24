@@ -6,19 +6,21 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 17:32:56 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/12 20:52:17 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:13:39 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Fixed.hpp"
 # include <iostream>
+#include <limits>
 
 int	main(void)
 {
 	Fixed	a;
 	Fixed	b(10);
-	Fixed	c(10000000000.42f);
+	Fixed	c(42.42f);
 	Fixed	d(b);
+	b = c;
 
 	a = Fixed(-1234.4321f);
 	std::cout << "a is " << a << std::endl;

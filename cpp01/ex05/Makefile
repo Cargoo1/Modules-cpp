@@ -1,16 +1,16 @@
-SRCS = main.cpp
-OBJS = $(SRCS:.cpp=.o)
-CC = c++
+SRCS = main.cpp Harl.cpp
+INCLUDES = Harl.hpp
 CFLAGS = -Werror -Wall -Wextra -std=c++98
-NAME = mySed
+OBJS = ${SRCS:.cpp=.o}
+NAME = harlFilter
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS)
+	c++ -o $(NAME) $(OBJS)
 
-$(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
+$(OBJS): $(SRCS) $(INCLUDES)
+	c++ $(CFLAGS) -c $(SRCS)
 
 clean:
 	rm -f $(OBJS)
