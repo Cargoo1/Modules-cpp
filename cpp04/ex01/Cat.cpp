@@ -6,11 +6,12 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 20:45:28 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/12 21:24:25 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:11:57 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Cat.hpp"
+#include "Animal.hpp"
 #include "Brain.hpp"
 
 #include <cstdlib>
@@ -25,7 +26,7 @@ Cat::Cat(void)
 	return ;
 }
 
-Cat::Cat(Cat const & other)
+Cat::Cat(Cat const & other) : Animal(other)
 {
 	std::cout << "Cat copy constructor called\n";
 	this->_type = other._type;

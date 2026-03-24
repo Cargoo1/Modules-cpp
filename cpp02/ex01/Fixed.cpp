@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:35:09 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/12 20:35:02 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:13:15 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Fixed::Fixed(float const float_value)
 Fixed::Fixed(Fixed const & fixedValue)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = fixedValue;
+	this->setRawBits(fixedValue.getRawBits());
 	return;
 }
 
@@ -72,8 +72,9 @@ int		Fixed::toInt(void) const
 Fixed&	Fixed::operator=(Fixed const & new_value)
 {
 	std::cout << "Copy assigment operation called" << std::endl;
-	this->_fixedValue = new_value.getRawBits();
-	return *this;
+	this->~Fixed();
+	new (this) Fixed(new_value);
+	return (*this);
 }
 
 std::ostream	&operator<<(std::ostream &o, Fixed const &value)

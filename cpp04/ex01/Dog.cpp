@@ -6,11 +6,12 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 20:45:28 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/12 21:18:16 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:11:27 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Dog.hpp"
+#include "Animal.hpp"
 #include "Brain.hpp"
 
 # include <iostream>
@@ -23,7 +24,7 @@ Dog::Dog(void)
 	return ;
 }
 
-Dog::Dog(Dog const & other)
+Dog::Dog(Dog const & other) : Animal()
 {
 	std::cout << "Dog copy constructor called\n";
 	this->_type = other._type;

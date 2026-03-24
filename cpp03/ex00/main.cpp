@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 12:44:23 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/17 14:17:49 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:07:07 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,12 @@ int	main(void)
 {
 	ClapTrap	test("test");
 	std::cout << test.getHitPoints() << '\n';
-	std::cout << std::numeric_limits<unsigned int>::max() << '\n';
+	test.attack("aaa");
+	test.takeDamage(10000000);
+	std::cout << test.getHitPoints() << '\n';
+	test.takeDamage(10000000);
+	test.setHitPoints(std::numeric_limits<unsigned int>::max() - 100);
+	std::cout << test.getHitPoints() << '\n';
+	test.beRepaired(200);
+	std::cout << test.getHitPoints() << '\n';
 }

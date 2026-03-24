@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:35:09 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/12 21:47:05 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:56:29 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,34 @@
 
 Fixed::Fixed(void) : _fixedValue(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 	return;
 }
 
 Fixed::Fixed(int const int_value): _fixedValue(int_value << Fixed::_numFractionalBits)
 {
-	std::cout << "Int constructor called" << std::endl;
+	//std::cout << "Int constructor called" << std::endl;
 	return;
 }
 
 Fixed::Fixed(float const float_value)
 {
-	std::cout << "Float constructor called" << std::endl;
-	this->_fixedValue = (int)roundf(float_value * (1 << Fixed::_numFractionalBits));
+	//std::cout << "Float constructor called" << std::endl;
+	this->_fixedValue = static_cast<int>(
+							roundf(float_value * (1 << Fixed::_numFractionalBits)));
 	return;
 }
 
 Fixed::Fixed(Fixed const & fixedValue)
 {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = fixedValue;
+	//std::cout << "Copy constructor called" << std::endl;
+	this->_fixedValue = fixedValue.getRawBits();
 	return;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Descructor called" << std::endl;
+	//std::cout << "Descructor called" << std::endl;
 	return;
 }
 

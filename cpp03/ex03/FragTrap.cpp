@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 16:16:49 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/19 18:07:51 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:15:47 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ FragTrap::FragTrap(void) : ClapTrap()
 	return ;
 }
 
-FragTrap::FragTrap(std::string const & name)
+FragTrap::FragTrap(std::string const & name) : ClapTrap(name)
 {
 	std::cout << "FragTrap constructor with parameters called\n";
-	this->_name = name;
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;

@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 21:45:26 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/14 04:51:22 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/03/02 16:55:57 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 
 Fixed&	Fixed::operator=(Fixed const & new_value)
 {
-	std::cout << "Copy assigment operation called" << std::endl;
-	this->_fixedValue = new_value.getRawBits();
+	//std::cout << "Copy assigment operation called" << std::endl;
+	this->~Fixed();
+	new	(this) Fixed(new_value);
 	return *this;
 }
 

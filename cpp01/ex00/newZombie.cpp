@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 15:51:06 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/03 15:51:30 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:07:09 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,3 @@ Zombie	*newZombie(std::string name)
 	newZombie->setName(name);
 	return (newZombie);
 }
-

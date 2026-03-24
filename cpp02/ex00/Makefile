@@ -1,8 +1,8 @@
-SRCS = main.cpp Harl.cpp
-INCLUDES = Harl.hpp
+SRCS = main.cpp Fixed.cpp
+INCLUDES = Fixed.hpp
 CFLAGS = -Werror -Wall -Wextra -std=c++98
 OBJS = ${SRCS:.cpp=.o}
-NAME = harlFilter
+NAME = Fixed-point
 
 all: $(NAME)
 

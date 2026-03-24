@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 20:53:51 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/16 14:05:44 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:12:09 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,8 @@ int	main(void)
 		std::cout << doggie.getBrain()->getIdeas()[0] << '\n';
 		std::cout << another_dog.getBrain()->getIdeas()[0] << '\n';
 	}
+	Animal	lol;
+	Dog	a;
+	lol = a;
+	std::cout << lol.getType() + '\n';
 }

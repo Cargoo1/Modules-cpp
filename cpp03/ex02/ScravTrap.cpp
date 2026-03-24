@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 13:45:49 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/18 16:01:59 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:18:42 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ ScravTrap::ScravTrap(std::string const & name) : ClapTrap(name)
 
 ScravTrap::ScravTrap(ScravTrap const & other)
 {
+	std::cout << "ScravTrap copy constructor called\n";
 	*this = other;
 	return ;
 }

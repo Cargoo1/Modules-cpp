@@ -1,8 +1,8 @@
-SRCS = main.cpp Harl.cpp
-INCLUDES = Harl.hpp
-CFLAGS = -Werror -Wall -Wextra -std=c++98
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
+INCLUDES = Bureaucrat.hpp Form.hpp
+CFLAGS = -Werror -Wall -Wextra -std=c++98 -g3
 OBJS = ${SRCS:.cpp=.o}
-NAME = harlFilter
+NAME = exceptions
 
 all: $(NAME)
 

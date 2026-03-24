@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScravTrap.hpp                                      :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 16:43:49 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/06 17:32:20 by acamargo         ###   ########.fr       */
+/*   Created: 2026/02/09 12:14:37 by acamargo          #+#    #+#             */
+/*   Updated: 2026/02/09 12:39:42 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCRAVTRAP_HPP
+#ifndef HARL_HPP
 
-#define SCRAVTRAP_HPP
+#define HARL_HPP
 
-# include "ClapTrap.hpp"
+# include <string>
 
-class	ScravTrap : virtual public ClapTrap
+class	Harl
 {
 public:
-	ScravTrap(void);
-	ScravTrap(std::string const & name);
-	ScravTrap(ScravTrap const & other);
-	~ScravTrap(void);
-
-	ScravTrap&	operator=(ScravTrap const & other);
-	
-	void	guardGate(void);
-	void	attack(std::string const & target);
-
+	Harl(void);
+	~Harl(void);
+	void	complain(std::string level);
+private:
+	void	_debug(void);
+	void	_info(void);
+	void	_warning(void);
+	void	_error(void);
+	void	_unknownlevel(void);
 };
 
 #endif

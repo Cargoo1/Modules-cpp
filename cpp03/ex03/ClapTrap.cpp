@@ -6,22 +6,21 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 12:49:07 by acamargo          #+#    #+#             */
-/*   Updated: 2026/02/19 17:49:57 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:08:37 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ClapTrap.hpp"
 
 # include <iostream>
-
-# include <limits>
+#include <limits>
 
 ClapTrap::ClapTrap(void) : _name("Jhon doe"),
-						_hitPoints(0),
-						_energyPoints(0),
+						_hitPoints(10),
+						_energyPoints(10),
 						_attackDamage(0)
 {
-	std::cout << "ClapTrap default constructor called\n";
+	std::cout << "ClapTrap Default constructor called\n";
 	return ;
 }
 
@@ -30,21 +29,20 @@ ClapTrap::ClapTrap(std::string const & name) : _name(name),
 											_energyPoints(10),
 											_attackDamage(0)
 {
-	std::cout << "ClapTrap constructor with parameters called\n";
-	std::cout << _name + '\n';
+	std::cout << "ClapTrap Constructor with parameters called\n";
 	return ;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & other)
 {
-	std::cout << "ClapTrap copy constructor called\n";
+	std::cout << "ClapTrap Copy constructor called\n";
 	*this = other;
 	return ;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "ClapTrap destructor called\n";
+	std::cout << "ClapTrap Destructor called\n";
 	return ;
 }
 
@@ -133,29 +131,35 @@ void	ClapTrap::attack(std::string const & target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	unsigned int	hit_points;
+
 	if (this->getHitPoints() == 0)
 	{
 		std::cout << this->getName() + " is dead\n";
 		return ;
 	}
+	std::cout << "ClapTrap " + this->getName() + " takes ";
+	std::cout << amount << " of damage!\n";
 	if (amount > this->getHitPoints())
+	{
 		this->setHitPoints(0);
-	else
-		this->setHitPoints(this->getHitPoints() - amount);
-	std::cout << this->getName() + " has lost " << amount << " hit points!\n";
+		return ;
+	}
+	hit_points = this->getHitPoints() - amount;
+	this->setHitPoints(hit_points);
 	return ;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	long	check_for_overflow;
-
 	if (!is_able_to_interact())
 		return ;
-	check_for_overflow = static_cast<long>(amount) + static_cast<long>(this->getHitPoints());
-	if (check_for_overflow > std::numeric_limits<unsigned int>::max())
+	std::cout << "ClapTrap " + this->getName() + " gets " << amount << " of hit points!\n";
+	if (amount > std::numeric_limits<unsigned int>::max() - this->getHitPoints())
+	{
+		this->setHitPoints(std::numeric_limits<unsigned int>::max());
 		return ;
+	}
 	this->setHitPoints(amount + this->getHitPoints());
-	std::cout << this->getName() + " has gained " << amount << " hit points!\n";
 	return ;
 }
