@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 18:54:22 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/24 15:14:19 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/25 16:36:30 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 	return (*this);
 }
 
-void	Bureaucrat::signForm(AForm& some_form)
+void	Bureaucrat::signForm(AForm & some_form)
 {
 	try
 	{
@@ -60,9 +60,33 @@ void	Bureaucrat::signForm(AForm& some_form)
 	}
 	catch(std::exception& e)
 	{
-		std::cout << this->getName() + " couldn't sign " + some_form.getName() + "because ";
-		std::cout << this->getName() + " grade is too low :(\n";
+		std::cout << this->getName() + " couldn't sign " + some_form.getName() + " because ";
+		std::cout << this->getName() + "'s grade is too low :(\n";
 	}
+	return ;
+}
+
+void	Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() + " executed " + form.getName() + '\n';
+	}
+	catch(AForm::GradeTooLowException& e)
+	{
+		std::cout << this->getName() + " couldn't execute " + form.getName() + " because ";
+		std::cout << this->getName() + "'s grade is too low :'(\n";
+	}
+	catch(AForm::NotSignedException& e)
+	{
+		std::cout << form.getName() + " is not signed, couldn't execute\n";
+	}
+	catch(std::exception& e)
+	{
+		std::cout << e.what();
+	}
+	return ;
 }
 
 const std::string & Bureaucrat::getName(void) const

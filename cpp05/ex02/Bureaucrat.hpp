@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 18:24:19 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/24 15:14:14 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/25 16:36:38 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ public:
 	Bureaucrat(const std::string & name, unsigned int grade);
 	~Bureaucrat(void);
 
-	Bureaucrat&	operator=(const Bureaucrat& other);
+	Bureaucrat&	operator=(Bureaucrat const& other);
 
 	const std::string& getName(void) const;
+	void	executeForm(AForm const & form) const;
 	void	incrementGrade();
 	void	decrementGrade();
 	unsigned int getGrade(void) const;
-	void	signForm(AForm& some_form);
+	void	signForm(AForm & some_form);
 
 private:
 	const std::string _name;

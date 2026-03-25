@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 15:15:25 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/24 15:48:18 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/25 15:35:02 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include "AForm.hpp"
 #include <exception>
+#include <fstream>
 #include <string>
 
 class	ShrubberyCreationForm: public AForm
@@ -35,6 +36,9 @@ public:
 
 	void	execute(Bureaucrat const & executor) const;
 private:
+	void	write_tree(std::fstream& file) const;
+	void	write_leafs(std::fstream& file) const;
+	void	write_logs(std::fstream& file) const;
 	std::string	_target;
 };
 
