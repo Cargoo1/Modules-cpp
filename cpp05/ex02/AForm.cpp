@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:37:55 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/24 15:14:24 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/25 16:38:33 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ AForm&	AForm::operator=(const AForm& other)
 {
 	if (this == &other)
 		return *this;
-	this->~AForm();
-	new (this) AForm(other);
+	this->_isSigned = other._isSigned;
 	return *this;
 }
 
@@ -90,6 +89,11 @@ const char *	AForm::GradeTooHighException::what() const throw()
 const char *	AForm::GradeTooLowException::what() const throw()
 {
 	return "GradeTooLow exception happened.\n";
+}
+
+const char *	AForm::NotSignedException::what() const throw()
+{
+	return "NotSigned exception happened.\n";
 }
 
 std::ostream&	operator<<(std::ostream& o, AForm& some_form)
