@@ -6,12 +6,13 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 17:38:27 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/27 15:07:33 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/27 16:06:17 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "Intern.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -22,13 +23,16 @@ int	main(void)
 {
 	{
 		std::cout << "--- Test 1 ---\n";
-		ShrubberyCreationForm	test("lol");
-		Bureaucrat				b("pablo", 150);
-		b.signForm(test);
-		b.executeForm(test);
-		b = Bureaucrat("pepe", 100);
-		b.signForm(test);
-		b.executeForm(test);
+		Intern	someone;
+		AForm	*form;
+		Bureaucrat	b("pepe", 3);
+
+		form = someone.makeForm("robotomy request", "pablo");
+		if (form)
+		{
+			b.signForm(*form);
+			b.executeForm(*form);
+		}
 		std::cout << "--- end test 1 ---\n";
 	}
 	{
