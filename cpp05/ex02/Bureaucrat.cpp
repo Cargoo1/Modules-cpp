@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 18:54:22 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 16:36:30 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/27 15:03:53 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 
 Bureaucrat::Bureaucrat(void) : _name("default?"), _grade(150)
 {
-	std::cout << "Bureaucrat constructor called\n";
+	//std::cout << "Bureaucrat constructor called\n";
 	return;
 }
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "Bureaucrat destructor called\n";
+	//std::cout << "Bureaucrat destructor called\n";
 	return ;
 }
 
 Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade) : _name(name)
 {
-	std::cout << "Bureaucrat constructor w parameters called\n";
+	//std::cout << "Bureaucrat constructor w parameters called\n";
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
