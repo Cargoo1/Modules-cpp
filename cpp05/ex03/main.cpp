@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 17:38:27 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/27 16:06:17 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/28 17:15:59 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ int	main(void)
 		AForm	*form;
 		Bureaucrat	b("pepe", 3);
 
-		form = someone.makeForm("robotomy request", "pablo");
+		form = someone.makeForm("shrubbery creation", "pablo");
 		if (form)
 		{
 			b.signForm(*form);
 			b.executeForm(*form);
 		}
 		std::cout << "--- end test 1 ---\n";
+		if (form)
+			delete form;
 	}
 	{
 		std::cout << "--- Test 2 ---\n";

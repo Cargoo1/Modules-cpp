@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 15:25:07 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/27 16:02:40 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/28 17:17:06 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ AForm*	Intern::makeForm(const std::string& form_name, const std::string& target)
 		if (names[i].compare(form_name) == 0)
 			return (this->*forms_makers[i])(target);
 	}
-	std::cout << form_name + " does not exists\n";
+	std::cout << form_name + " form does not exists\n";
 	return NULL;
 }
 
@@ -68,7 +68,7 @@ AForm*	Intern::makePresiPardon(const std::string& target) const
 		std::cout << e.what();
 		return NULL;
 	}
-	std::cout << "Inter creates " + new_form->getName() + '\n';
+	std::cout << "Intern creates " + new_form->getName() + '\n';
 	return new_form;
 }
 
@@ -84,7 +84,7 @@ AForm*	Intern::makeRobotomyRequest(const std::string& target) const
 		std::cout << e.what();
 		return NULL;
 	}
-	std::cout << "Inter creates " + new_form->getName() + '\n';
+	std::cout << "Intern creates " + new_form->getName() + '\n';
 	return new_form;
 }
 
@@ -100,6 +100,6 @@ AForm*	Intern::makeShrubberyCreation(const std::string& target) const
 		std::cout << e.what();
 		return NULL;
 	}
-	std::cout << "Inter creates " + new_form->getName() + '\n';
+	std::cout << "Intern creates " + new_form->getName() + '\n';
 	return new_form;
 }
