@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 17:39:22 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/30 19:02:44 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/03/31 17:38:40 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,16 @@ private:
 
 	ScalarConverter&	operator=(const ScalarConverter & other);
 	Types	getType(char c);
+	Types	find_decimal_Type(std::string const & str);
 
 
 
 public:
 	static void		convert(const std::string & str);
+	static void		cast(long n, ScalarConverter::Types type);
+	static void		cast(float n, ScalarConverter::Types type);
+	static void		cast(double n, ScalarConverter::Types type);
+	static void		cast(char c, ScalarConverter::Types type);
 };
 
 #endif
