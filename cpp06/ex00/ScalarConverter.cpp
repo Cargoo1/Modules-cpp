@@ -6,12 +6,11 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 17:46:16 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/31 17:52:32 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/04/16 21:53:30 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ScalarConverter.hpp"
-#include <cinttypes>
 #include <climits>
 #include <cmath>
 #include <cstdlib>
@@ -103,7 +102,7 @@ ScalarConverter::Types	findType(const std::string& str)
 	}
 	else if (str.compare(0, 3, "nan") == 0)
 	{
-		type = ScalarConverter::NAN;
+		type = ScalarConverter::NAND;
 		i += 3;
 		if (i < static_cast<int>(str.length()) && str.at(i) == 'f')
 			type = ScalarConverter::NANF;
@@ -117,8 +116,14 @@ ScalarConverter::Types	findType(const std::string& str)
 void	print_casts(int inum, float fnum, double dnum, char c, ScalarConverter::Types type, int overflows)
 {
 	(void)type;
-	std::cout << "char : " << c << '\n';
-	std::cout << "int : " << inum << '\n';
+	if (overflows & 1)
+		std::cout << "char : impossible" << '\n';
+	else
+		std::cout << "char : " << c << '\n';
+	if (overflows >> 1 & 1)
+		std::cout << "int : impossible\n";
+	else
+		std::cout << "int : " << inum << '\n';
 	std::cout << "float : " << fnum << '\n';
 	std::cout << "double : " << dnum << '\n';
 }
@@ -131,77 +136,97 @@ void	ScalarConverter::cast(long n, ScalarConverter::Types type)
 	double	dnum = 0;
 	char	c = 0;
 
-	if (n > std::numeric_limits<int>::max())
-		overflows = overflows | 3;
-	else
-	{
-		inum = static_cast<int>(n);
-		c = static_cast<char>(n);
-	}
+	if (n > std::numeric_limits<int>::max() || n < std::numeric_limits<int>::min())
+		overflows = overflows | 0b00000011;
+	if (n > std::numeric_limits<char>::max() || n < std::numeric_limits<char>::min())
+		overflows = overflows | 0b01;
+	inum = static_cast<int>(n);
+	c = static_cast<char>(n);
+	fnum = static_cast<float>(n);
+	dnum = static_cast<double>(n);
 	print_casts(inum, fnum, dnum, c, type, overflows);
+}
 
+void	ScalarConverter::cast(char n, ScalarConverter::Types type)
+{
+	int		overflows = 0;
+	int		inum = 0;
+	float	fnum = 0;
+	double	dnum = 0;
+
+	inum = static_cast<int>(n);
+	fnum = static_cast<float>(n);
+	dnum = static_cast<double>(n);
+	print_casts(inum, fnum, dnum, n, type, overflows);
 }
 
 void	ScalarConverter::cast(float n, ScalarConverter::Types type)
 {
-	bool	int_overflow = false;
-	bool	char_overflow = false;
+	int		overflows = 0;
 	int		inum = 0;
-	double	dnum;
-	char	c;
+	double	dnum = 0;
+	float	decimal_part = std::fabs(n) - std::floor(n);
+	int		sign = 1;
+	if (n < 0.0f)
+		sign = -1;
+	n = sign * (fabs(n) - fabs(decimal_part));
+	char	c = 0;
 
-	(void)int_overflow;
-	(void)char_overflow;
-	(void)c;
-	if (n > CHAR_MAX)
-		char_overflow = true;
-	if (inum > 127)
-		print_casts(&inum, &n, &dnum, NULL, type);
+	inum = static_cast<int>(n);
+	c = static_cast<char>(n);
+	if (std::fabs(n) - std::fabs(static_cast<float>(inum)) != 0.0f)
+		overflows = overflows | 0b11;
+	if (std::fabs(n) - std::fabs(static_cast<float>(c)) != 0.0f)
+		overflows = overflows | 0b01;
+	dnum = static_cast<double>(n);
+	print_casts(inum, n, dnum, c, type, overflows);
 }
+
+void	ScalarConverter::cast(double n, ScalarConverter::Types type)
+{
+	int		overflows = 0;
+	int		inum = 0;
+	float	fnum = 0;
+	double	decimal_part = std::fabs(n) - std::floor(n);
+	int		sign = 1;
+	if (n < 0.0f)
+		sign = -1;
+	n = sign * (fabs(n) - fabs(decimal_part));
+	char	c = 0;
+
+	inum = static_cast<int>(n);
+	c = static_cast<char>(n);
+	if (std::fabs(n) - std::fabs(static_cast<double>(inum)) != 0.0)
+		overflows = overflows | 0b11;
+	if (std::fabs(n) - std::fabs(static_cast<double>(c)) != 0.0)
+		overflows = overflows | 0b01;
+	fnum = static_cast<float>(n);
+	print_casts(inum, n, fnum, c, type, overflows);
+}
+
 void	ScalarConverter::convert(const std::string & str)
 {
 	Types	type = INVALID;
-	int		inum = 0;
-	double	dnum = 0.0;
-	float	fnum = 0.0;
-	char	c = 0;
 
 	if (!str.empty())
 		type = findType(str);
 	if (type == ScalarConverter::INVALID)
 	{
-		print_casts(NULL, NULL, NULL, NULL, type);
+		std::cout << "Invalid input\n";
 		return ;
 	}
 	switch (type) {
 		case INT:
+			cast(strtol(str.c_str(), NULL, 10), type);
 			break;
 		case CHAR:
-			c = str.at(0);
-			inum = static_cast<int>(c);
-			dnum = static_cast<double>(c);
-			fnum = static_cast<float>(c);
-			print_casts(&inum, &fnum, &dnum, &c, type);
+			cast(str.at(0), type);
 			break;
 		case FLOAT:
-			fnum = std::strtof(str.c_str(), NULL);
-			inum = static_cast<int>(fnum);
-			c = static_cast<char>(fnum);
-			dnum = static_cast<double>(fnum);
-			if (static_cast<int>(fnum) > 127)
-				print_casts(&inum, &fnum, &dnum, NULL, type);
-			else
-				print_casts(&inum, &fnum, &dnum, &c, type);
+			cast(strtof(str.c_str(), NULL), type);
 			break;
 		case DOUBLE:
-			dnum = std::strtod(str.c_str(), NULL);
-			inum = static_cast<int>(dnum);
-			c = static_cast<char>(dnum);
-			fnum = static_cast<float>(dnum);
-			if (static_cast<int>(dnum) > 127)
-				print_casts(&inum, &fnum, &dnum, NULL, type);
-			else
-				print_casts(&inum, &fnum, &dnum, &c, type);
+			cast(strtod(str.c_str(), NULL), type);
 			break;
 		default:
 			break;

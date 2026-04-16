@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 17:39:22 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/31 17:38:40 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/04/16 21:14:27 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class	ScalarConverter
 		INFFP,
 		INFFN,
 		NANF,
-		NAN,
+		NAND,
 		INVALID
 	};
 private:
