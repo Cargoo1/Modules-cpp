@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 15:43:33 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/31 18:15:00 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/04/16 21:21:44 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	main(int argc, char **argv)
 		return 1;
 	}
 	std::string str = argv[1];
-	float a = std::numeric_limits<float>::min();
-	std::cout << strtof("-11111111111111111111111111111111111111111111111111", NULL) << "\n";
-	//ScalarConverter::convert(str);
+	ScalarConverter::convert(str);
 	return 0;
 }
