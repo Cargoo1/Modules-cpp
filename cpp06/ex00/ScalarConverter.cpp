@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 17:46:16 by acamargo          #+#    #+#             */
-/*   Updated: 2026/04/16 21:53:30 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/04/17 17:08:11 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,15 @@ void	print_casts(int inum, float fnum, double dnum, char c, ScalarConverter::Typ
 	(void)type;
 	if (overflows & 1)
 		std::cout << "char : impossible" << '\n';
+	else if ((c >= 0 && c <= 32) || c == 127)
+		std::cout << "char : Non displayable\n";
 	else
-		std::cout << "char : " << c << '\n';
+		std::cout << "char : " << '\'' << c << '\'' << '\n';
 	if (overflows >> 1 & 1)
 		std::cout << "int : impossible\n";
 	else
 		std::cout << "int : " << inum << '\n';
-	std::cout << "float : " << fnum << '\n';
+	std::cout << "float : " << fnum << "f\n";
 	std::cout << "double : " << dnum << '\n';
 }
 
@@ -165,18 +167,19 @@ void	ScalarConverter::cast(float n, ScalarConverter::Types type)
 	int		overflows = 0;
 	int		inum = 0;
 	double	dnum = 0;
-	float	decimal_part = std::fabs(n) - std::floor(n);
+	float	decimal_part = std::fabs(n) - std::floor(std::fabs(n));
 	int		sign = 1;
 	if (n < 0.0f)
 		sign = -1;
-	n = sign * (fabs(n) - fabs(decimal_part));
+	float temp = sign * (fabs(n) - fabs(decimal_part));
 	char	c = 0;
 
 	inum = static_cast<int>(n);
 	c = static_cast<char>(n);
-	if (std::fabs(n) - std::fabs(static_cast<float>(inum)) != 0.0f)
+	if (std::fabs(temp) - std::fabs(static_cast<float>(inum)) != 0.0f)
 		overflows = overflows | 0b11;
-	if (std::fabs(n) - std::fabs(static_cast<float>(c)) != 0.0f)
+	if ((std::fabs(temp) - std::fabs(static_cast<float>(c)) != 0.0f)
+		|| c < 0)
 		overflows = overflows | 0b01;
 	dnum = static_cast<double>(n);
 	print_casts(inum, n, dnum, c, type, overflows);
@@ -187,18 +190,19 @@ void	ScalarConverter::cast(double n, ScalarConverter::Types type)
 	int		overflows = 0;
 	int		inum = 0;
 	float	fnum = 0;
-	double	decimal_part = std::fabs(n) - std::floor(n);
+	double	decimal_part = std::fabs(n) - std::floor(std::fabs(n));
 	int		sign = 1;
 	if (n < 0.0f)
 		sign = -1;
-	n = sign * (fabs(n) - fabs(decimal_part));
+	double	temp = sign * (fabs(n) - fabs(decimal_part));
 	char	c = 0;
 
 	inum = static_cast<int>(n);
 	c = static_cast<char>(n);
-	if (std::fabs(n) - std::fabs(static_cast<double>(inum)) != 0.0)
+	if (std::fabs(temp) - std::fabs(static_cast<double>(inum)) != 0.0)
 		overflows = overflows | 0b11;
-	if (std::fabs(n) - std::fabs(static_cast<double>(c)) != 0.0)
+	if ((std::fabs(temp) - std::fabs(static_cast<double>(c)) != 0.0)
+		|| c < 0)
 		overflows = overflows | 0b01;
 	fnum = static_cast<float>(n);
 	print_casts(inum, n, fnum, c, type, overflows);
@@ -227,6 +231,36 @@ void	ScalarConverter::convert(const std::string & str)
 			break;
 		case DOUBLE:
 			cast(strtod(str.c_str(), NULL), type);
+			break;
+		case INFP:
+			print_casts(0, std::numeric_limits<float>::infinity(),
+							std::numeric_limits<double>::infinity(),
+							0, type, 0b11);
+			break;
+		case INFN:
+			print_casts(0, -std::numeric_limits<float>::infinity(),
+							-std::numeric_limits<double>::infinity(),
+							0, type, 0b11);
+			break;
+		case INFFP:
+			print_casts(0, std::numeric_limits<float>::infinity(),
+							std::numeric_limits<double>::infinity(),
+							0, type, 0b11);
+			break;
+		case INFFN:
+			print_casts(0, -std::numeric_limits<float>::infinity(),
+							-std::numeric_limits<double>::infinity(),
+							0, type, 0b11);
+			break;
+		case NAND:
+			print_casts(0, std::numeric_limits<float>::quiet_NaN(),
+							std::numeric_limits<double>::quiet_NaN(),
+							0, type, 0b11);
+			break;
+		case NANF:
+			print_casts(0, std::numeric_limits<float>::quiet_NaN(),
+							std::numeric_limits<double>::quiet_NaN(),
+							0, type, 0b11);
 			break;
 		default:
 			break;
