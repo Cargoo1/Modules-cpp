@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 17:39:22 by acamargo          #+#    #+#             */
-/*   Updated: 2026/04/16 21:14:27 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/04/20 14:46:33 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class	ScalarConverter
 {
-	public:
+public:
 	enum	Types
 	{
 		INT,
@@ -41,9 +41,6 @@ private:
 	ScalarConverter&	operator=(const ScalarConverter & other);
 	Types	getType(char c);
 	Types	find_decimal_Type(std::string const & str);
-
-
-
 public:
 	static void		convert(const std::string & str);
 	static void		cast(long n, ScalarConverter::Types type);
