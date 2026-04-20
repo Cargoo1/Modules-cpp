@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 17:46:16 by acamargo          #+#    #+#             */
-/*   Updated: 2026/04/17 17:08:11 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/04/20 14:13:00 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ ScalarConverter::Types	findType(const std::string& str)
 {
 	ScalarConverter::Types	type = ScalarConverter::INVALID;
 	bool	sign = 0;
-	int		i = 0;
 
 	if (!ft_isdigit(str.at(0)) && str.length() == 1)
 		return ScalarConverter::CHAR;
@@ -91,26 +90,21 @@ ScalarConverter::Types	findType(const std::string& str)
 	{
 		if (str.at(0) == '-')
 			sign = 1;
-		i++;
-		if (str.compare(1,3,"inf") == 0)
-			type = ScalarConverter::INFP;
-		i += 3;
-		if (i < static_cast<int>(str.length())
-			&& (type == ScalarConverter::INFP
-			&& str.at(i) == 'f'))
-			type = ScalarConverter::INFFP;
+		if (str.compare(1,4,"inf") == 0)
+			type = static_cast<ScalarConverter::Types>(ScalarConverter::INFP + sign);
+		if (str.compare(1,5, "inff") == 0)
+			type = static_cast<ScalarConverter::Types>(ScalarConverter::INFFP + sign);
 	}
-	else if (str.compare(0, 3, "nan") == 0)
+	else
 	{
-		type = ScalarConverter::NAND;
-		i += 3;
-		if (i < static_cast<int>(str.length()) && str.at(i) == 'f')
+		if (str.compare(0, 4, "nan") == 0)
+			type = ScalarConverter::NAND;
+		if (str.compare(0, 5, "nanf") == 0)
 			type = ScalarConverter::NANF;
-		return type;
 	}
 	if (type == ScalarConverter::INVALID)
 		return find_decimal_Type(str);
-	return (ScalarConverter::Types)(type + sign);
+	return type;
 }
 
 void	print_casts(int inum, float fnum, double dnum, char c, ScalarConverter::Types type, int overflows)
@@ -140,7 +134,8 @@ void	ScalarConverter::cast(long n, ScalarConverter::Types type)
 
 	if (n > std::numeric_limits<int>::max() || n < std::numeric_limits<int>::min())
 		overflows = overflows | 0b00000011;
-	if (n > std::numeric_limits<char>::max() || n < std::numeric_limits<char>::min())
+	if (n > std::numeric_limits<char>::max() || n < std::numeric_limits<char>::min()
+		|| n < 0)
 		overflows = overflows | 0b01;
 	inum = static_cast<int>(n);
 	c = static_cast<char>(n);
