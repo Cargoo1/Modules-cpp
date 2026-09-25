@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 20:49:14 by acamargo          #+#    #+#             */
-/*   Updated: 2026/04/23 21:55:03 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/23 17:43:58 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 
 #include <cstddef>
 
-template <typename T, typename RV> void	iter(T* a, const size_t lenght, RV(*fn)(T& param));
+template <typename T, typename RV> void	iter(T* a, const std::size_t lenght, RV fn)
+{
+	if (!a || !fn)
+		return;
+	size_t i = 0;
+	while (i < lenght)
+		fn(a[i++]);
+}
 
 #endif

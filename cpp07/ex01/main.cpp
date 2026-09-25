@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 20:41:28 by acamargo          #+#    #+#             */
-/*   Updated: 2026/04/23 22:06:26 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/23 17:44:24 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,36 @@
 #include <cstddef>
 #include <iostream>
 
-template <typename T, typename RV> void	iter(T* a, const size_t lenght, RV (*fn)(T& param))
+void	display(const int &a)
 {
-	size_t i = 0;
-	while (i < lenght)
-		fn(a[i++]);
+	std::cout << a << '\n';
 }
 
-void	increment(const char &a)
+void	increment(int& n)
 {
-	(void)a;
+	n++;
+}
+
+void	display(const char &a)
+{
+	std::cout << a << '\n';
+}
+
+void	increment(char& n)
+{
+	n++;
 }
 
 int	main(void)
 {
 	int	array[2] = {1, 2};
-	(void)array;
 	char	array2[2] = {'a', 'b'};
-	const	std::string c = "aaa";
-	const int	lenght = 10;
-	::iter<const char, void>(array2, lenght, increment);
-	std::cout << array2[0] << '\n' << array2[1] << '\n';
+	const int	lenght = 2;
+	::iter<int, void (*)(int&)>(array, lenght, increment);
+	::iter<int, void (*)(int&)>(array, 2, NULL);
+	::iter<int, void (*)(const int&)>(array, 2, display);
+	::iter<char, void(*)(char&)>(array2, lenght, increment);
+	::iter<char, void(*)(const char&)>(array2, 2, display);
 	
 	return 0;
 }

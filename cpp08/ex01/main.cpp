@@ -5,28 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 19:39:41 by acamargo          #+#    #+#             */
-/*   Updated: 2026/09/23 17:50:04 by acamargo         ###   ########.fr       */
+/*   Created: 2026/09/25 21:35:10 by acamargo          #+#    #+#             */
+/*   Updated: 2026/09/25 22:29:39 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "whatever.hpp"
+#include "Span.hpp"
 #include <iostream>
+#include <vector>
 
-int	main(void)
+int	main()
 {
 	{
-		int a = 2;
-		int b = 3;
-		::swap( a, b );
-		std::cout << "a = " << a << ", b = " << b << std::endl;
-		std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-		std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-		std::string c = "chaine1";
-		std::string d = "chaine2";
-		::swap(c, d);
-		std::cout << "c = " << c << ", d = " << d << std::endl;
-		std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-		std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+		Span	test(5);
+		int	arr[5] = {1,4,5,12,10};
+		test.addNumber(arr, arr + 5);
+		for (size_t i = 0; i < test.getContainer().size(); ++i)
+			std::cout << test.getContainer().at(i) << '\n';
+		std::cout << test.shortestSpan() << std::endl;
+		std::cout << test.longestSpan() << std::endl;
+	}
+	{
+		Span sp = Span(5);
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 	}
 }

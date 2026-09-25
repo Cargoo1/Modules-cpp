@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 14:41:46 by acamargo          #+#    #+#             */
-/*   Updated: 2026/09/17 18:25:30 by acamargo         ###   ########.fr       */
+/*   Created: 2026/09/25 18:15:22 by acamargo          #+#    #+#             */
+/*   Updated: 2026/09/25 19:05:58 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
+#pragma once
 
-#define SERIALIZER_HPP
-
-#include <stdint.h>
-
-struct	Data
+#include <exception>
+#include <iterator>
+#include <typeinfo>
+template<class T>
+typename T::const_iterator	easyfind(T const& first, int second)
 {
-	int	x;
-	char c;
-};
-
-class	Serializer
-{
-private:
-	Serializer(void);
-	Serializer(const Serializer& other);
-	~Serializer(void);
-
-	Serializer&	operator=(const Serializer& other);
-public:
-	static uintptr_t	serialize(Data* ptr);
-	static Data*	deserialize(uintptr_t raw);
-};
-
-#endif
+	typedef typename T::const_iterator iter;
+	for (iter it = first.begin(); it != first.end(); it++)
+	{
+		if (*it == second)
+			return it;
+	}
+	throw std::exception();
+}

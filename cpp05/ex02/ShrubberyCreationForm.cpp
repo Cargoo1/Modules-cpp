@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 15:25:36 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 15:56:54 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 19:49:50 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@
 # define TREE_MID (TREE_WIDTH / 2)
 
 # define TREE_NBR 6
-
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm()
-{
-	this->_target = "default?";
-	return ;
-}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
 	: AForm("ShrubberyCreationForm", 145, 137), _target(target)
@@ -64,10 +58,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (!this->getIsSigned())
-		throw AForm::NotSignedException();
-	else if (executor.getGrade() > this->getGrade2Exec())
-		throw AForm::GradeTooLowException();
+	this->check_executor(executor);
 	std::fstream	file;
 
 	file.open((this->_target + "_shrubbery").c_str(), std::fstream::out);

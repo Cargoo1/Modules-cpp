@@ -6,18 +6,12 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 18:54:22 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/24 12:24:32 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 19:22:27 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
-
-Bureaucrat::Bureaucrat(void) : _name("default?"), _grade(150)
-{
-	std::cout << "Bureaucrat constructor called\n";
-	return;
-}
 
 Bureaucrat::~Bureaucrat(void)
 {

@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 14:40:57 by acamargo          #+#    #+#             */
-/*   Updated: 2026/04/20 15:21:39 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/17 18:26:49 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int	main(void)
 {
 	Data	*ptr = new Data;
 	ptr->c = 'x';
+	ptr->x = 2;
 	uintptr_t	uptr;
 	uptr = Serializer::serialize(ptr);
 	Data	*temp = Serializer::deserialize(uptr);
+	std::cout << temp->x << '\n' << temp->c << '\n';
 	if (temp == ptr)
 		std::cout << "Pointers are equal\n";
 }

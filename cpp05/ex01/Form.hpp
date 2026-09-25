@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 12:43:02 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/24 14:27:26 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 19:13:53 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ public:
 		public:
 			virtual const char *	what() const throw();
 	};
-	Form();
 	Form(const std::string& name, const unsigned int grade2sign,
 									const unsigned int grade2exec);
 	Form(const Form& other);

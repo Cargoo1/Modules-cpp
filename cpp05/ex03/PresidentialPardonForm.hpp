@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 14:57:00 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/27 14:58:01 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:25:10 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 class	PresidentialPardonForm : public AForm
 {
 public:
-	PresidentialPardonForm(void);
 	PresidentialPardonForm(const std::string& target);
 	PresidentialPardonForm(const PresidentialPardonForm& other);
 	~PresidentialPardonForm(void);

@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 15:25:36 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 15:56:54 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:25:35 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@
 # define TREE_MID (TREE_WIDTH / 2)
 
 # define TREE_NBR 6
-
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm()
-{
-	this->_target = "default?";
-	return ;
-}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
 	: AForm("ShrubberyCreationForm", 145, 137), _target(target)

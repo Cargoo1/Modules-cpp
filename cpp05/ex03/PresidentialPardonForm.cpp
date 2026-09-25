@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 14:58:19 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/27 15:01:53 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:25:17 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 #include "AForm.hpp"
 
 # include <iostream>
-
-PresidentialPardonForm::PresidentialPardonForm(void) : AForm()
-{
-	this->_target = "default?";
-	return ;
-}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
 	: AForm("PresidentialPardonForm", 25, 5), _target(target)

@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 18:54:22 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/24 13:37:38 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 19:14:17 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include "Form.hpp"
 #include <exception>
 #include <iostream>
-
-Bureaucrat::Bureaucrat(void) : _name("default?"), _grade(150)
-{
-	std::cout << "Bureaucrat constructor called\n";
-	return;
-}
 
 Bureaucrat::~Bureaucrat(void)
 {

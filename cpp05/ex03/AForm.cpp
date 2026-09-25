@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:37:55 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 16:38:33 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:25:59 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 # include "Bureaucrat.hpp"
 #include <ostream>
-
-AForm::AForm() : _name("default?"), _isSigned(0), _minGrade2sign(150), _minGrade2exec(150)
-{
-	return ;
-}
 
 AForm::AForm(const std::string& name, unsigned int grade2sign, unsigned int grade2exec)
 	: _name(name), _isSigned(0), _minGrade2sign(grade2sign), _minGrade2exec(grade2exec)

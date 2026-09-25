@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 14:41:46 by acamargo          #+#    #+#             */
-/*   Updated: 2026/09/17 18:25:30 by acamargo         ###   ########.fr       */
+/*   Created: 2026/09/17 18:52:57 by acamargo          #+#    #+#             */
+/*   Updated: 2026/09/17 18:53:39 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
+#include "Base.hpp"
 
-#define SERIALIZER_HPP
-
-#include <stdint.h>
-
-struct	Data
+Base::Base(void)
 {
-	int	x;
-	char c;
-};
 
-class	Serializer
+}
+
+Base::~Base()
 {
-private:
-	Serializer(void);
-	Serializer(const Serializer& other);
-	~Serializer(void);
 
-	Serializer&	operator=(const Serializer& other);
-public:
-	static uintptr_t	serialize(Data* ptr);
-	static Data*	deserialize(uintptr_t raw);
-};
-
-#endif
+}

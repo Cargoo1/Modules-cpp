@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 12:43:02 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 16:28:39 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 19:50:44 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ public:
 	AForm&	operator=(const AForm& other);
 
 	void			beSigned(const Bureaucrat& bureaucrat);
+	void			check_executor(const Bureaucrat& bureaucrat) const;
 	virtual void	execute(Bureaucrat const & executor) const = 0;
 	const std::string&	getName(void) const;
 	unsigned int	getGrade2Sign(void) const;

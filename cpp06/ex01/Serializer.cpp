@@ -6,11 +6,12 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:03:08 by acamargo          #+#    #+#             */
-/*   Updated: 2026/04/20 15:21:06 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/17 18:25:49 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+
 Serializer::Serializer(void)
 {
 	return;
@@ -37,10 +38,8 @@ Serializer&	Serializer::operator=(const Serializer& other)
 uintptr_t	Serializer::serialize(Data* ptr)
 {
 	uintptr_t	uptr;
-	void	*vptr;
 
-	vptr = static_cast<void*>(ptr);
-	uptr = reinterpret_cast<uintptr_t>(vptr);
+	uptr = reinterpret_cast<uintptr_t>(ptr);
 	return uptr;
 }
 

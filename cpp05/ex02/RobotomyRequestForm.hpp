@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:44:55 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 15:51:27 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:19:59 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 class	RobotomyRequestForm : public AForm
 {
 public:
-	RobotomyRequestForm(void);
 	RobotomyRequestForm(const std::string& target);
 	RobotomyRequestForm(const RobotomyRequestForm& other);
 	~RobotomyRequestForm(void);

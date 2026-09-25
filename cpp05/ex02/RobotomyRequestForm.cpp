@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:58:00 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 16:24:39 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:19:54 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 #include <cstdlib>
 #include <ctime>
 # include <iostream>
-
-RobotomyRequestForm::RobotomyRequestForm(void) : AForm()
-{
-	this->_target = "default?";
-	return ;
-}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
 	: AForm("RobotomyRequestForm", 72, 45), _target(target)
@@ -51,10 +45,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
-	if (!this->getIsSigned())
-		throw AForm::NotSignedException();
-	else if (executor.getGrade() > this->getGrade2Exec())
-		throw AForm::GradeTooLowException();
+	this->check_executor(executor);
 	std::cout << "* making some drilling noises *\n";
 	srand(time(NULL));
 	int	coin_toss = rand() % 2;

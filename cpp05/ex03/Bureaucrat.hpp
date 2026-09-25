@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 18:24:19 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 16:36:38 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:24:55 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ public:
 			virtual const char *	what() const throw();
 	};
 
-	Bureaucrat(void);
 	Bureaucrat(const Bureaucrat& other);
 	Bureaucrat(const std::string & name, unsigned int grade);
 	~Bureaucrat(void);
