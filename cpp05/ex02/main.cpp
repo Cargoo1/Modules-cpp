@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 17:38:27 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/27 15:07:33 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:20:45 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 {
 	{
 		std::cout << "--- Test 1 ---\n";
-		ShrubberyCreationForm	test("lol");
+		ShrubberyCreationForm	test("L");
 		Bureaucrat				b("pablo", 150);
 		b.signForm(test);
 		b.executeForm(test);

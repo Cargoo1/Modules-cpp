@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:58:00 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 16:24:39 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:26:20 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 #include <cstdlib>
 #include <ctime>
 # include <iostream>
-
-RobotomyRequestForm::RobotomyRequestForm(void) : AForm()
-{
-	this->_target = "default?";
-	return ;
-}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
 	: AForm("RobotomyRequestForm", 72, 45), _target(target)

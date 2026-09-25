@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 17:38:27 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/24 14:31:09 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 19:21:08 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,22 @@
 int	main(void)
 {
 	{
-		Bureaucrat	test("pepe", 1);
-		Form		some_form;
+		Bureaucrat	test("pepe", 2);
+		Form		form_1("paper", 1, 2);
 		try
 		{
-			some_form = Form("paper", 1, 2);
+			Form some_form("test", 1, 123123);
 		}
 		catch(std::exception& e)
 		{
 			std::cout << e.what();
-			std::cout << some_form.getGrade2Sign() << '\n';
+			std::cout << form_1.getGrade2Sign() << '\n';
 		}
-		std::cout << some_form;
-		test.signForm(some_form);
-		std::cout << some_form;
+		std::cout << form_1;
+		test.signForm(form_1);
+		std::cout << form_1;
+		test.incrementGrade();
+		test.signForm(form_1);
 	}
 	return 0;
 

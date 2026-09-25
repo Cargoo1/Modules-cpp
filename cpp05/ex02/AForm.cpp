@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:37:55 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/25 16:38:33 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 19:51:00 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ void	AForm::beSigned(const Bureaucrat& bureaucrat)
 		throw AForm::GradeTooLowException();
 	this->_isSigned = 1;
 	return ;
+}
+
+void	AForm::check_executor(const Bureaucrat& bureaucrat) const
+{
+	if (!this->_isSigned)
+		throw AForm::NotSignedException();
+	else if (bureaucrat.getGrade() > this->_minGrade2exec)
+		throw AForm::GradeTooLowException();
 }
 
 const std::string& AForm::getName(void) const

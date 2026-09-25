@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 14:58:19 by acamargo          #+#    #+#             */
-/*   Updated: 2026/03/27 15:01:53 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/15 21:19:42 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 #include "AForm.hpp"
 
 # include <iostream>
-
-PresidentialPardonForm::PresidentialPardonForm(void) : AForm()
-{
-	this->_target = "default?";
-	return ;
-}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
 	: AForm("PresidentialPardonForm", 25, 5), _target(target)
@@ -52,10 +46,7 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	if (!this->getIsSigned())
-		throw AForm::NotSignedException();
-	else if (executor.getGrade() > this->getGrade2Exec())
-		throw AForm::GradeTooLowException();
+	this->check_executor(executor);
 	std::cout << this->_target + " has been pardoned by Zaphod Beeblebrox.\n";
 	return ;
 }
