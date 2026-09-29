@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 20:48:19 by acamargo          #+#    #+#             */
-/*   Updated: 2026/09/25 22:24:50 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/29 19:15:48 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <cmath>
 #include <cstddef>
 #include <exception>
+#include <limits>
 #include <new>
 #include <vector>
 
@@ -28,6 +29,7 @@ Span::Span(unsigned int N)
 
 Span::Span(Span const& other)
 {
+	this->_container.reserve(other._container.capacity());
 	this->_container = other._container;
 }
 
@@ -59,6 +61,8 @@ std::vector<int>&	Span::getContainer(void)
 
 int	Span::shortestSpan()
 {
+	if (this->_container.size() <= 1)
+		throw std::exception();
 	int	diff = INT_MAX;
 	int	temp_diff;
 	std::sort(this->_container.begin(), this->_container.end());
@@ -74,6 +78,8 @@ int	Span::shortestSpan()
 
 int	Span::longestSpan()
 {
+	if (this->_container.size() <= 1)
+		throw std::exception();
 	int	min = *std::min_element(this->_container.begin(), this->_container.end());
 	int	max = *std::max_element(this->_container.begin(), this->_container.end());
 	return max - min;

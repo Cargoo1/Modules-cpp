@@ -1,10 +1,10 @@
 SRCS = main.cpp
-INCLUDES = easyfind.hpp
+INCLUDES = MutantStack.hpp
 C++ = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
 OBJS = ${SRCS:.cpp=.o}
 RM = rm -f
-NAME = easyfind
+NAME = MutantStack
 
 all: $(NAME)
 

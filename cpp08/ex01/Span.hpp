@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 20:48:29 by acamargo          #+#    #+#             */
-/*   Updated: 2026/09/25 22:14:46 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/29 19:14:15 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,11 @@ public:
 	int		longestSpan();
 private:
 	std::vector<int>	_container;
-	unsigned int		_size;
-	unsigned int		_capacity;
 };
 
 template <class InputIterator> void	Span::addNumber(InputIterator first, InputIterator last)
 {
-	for (; first != last;)
-	{
+	for (; first != last; ++first)
 		this->addNumber(*first);
-		++first;
-	}
 
 }
