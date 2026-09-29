@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 18:20:50 by acamargo          #+#    #+#             */
-/*   Updated: 2026/09/25 20:01:31 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/09/29 19:02:50 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main()
 		std::cout << "Iterator value: " << *it << "\n";
 		try
 		{
-			easyfind(v, 30);
+			std::cout << *easyfind(v, 20) << '\n';
 		}
 		catch(...)
 		{
@@ -44,7 +44,7 @@ int	main()
 		std::cout << "Iterator value: " << *it << "\n";
 		try
 		{
-			easyfind(list, 30);
+			std::cout << *easyfind(list, 1) << '\n';
 		}
 		catch(...)
 		{
@@ -61,7 +61,7 @@ int	main()
 		std::cout << "Iterator value: " << *it << "\n";
 		try
 		{
-			easyfind(deque, 30);
+			std::cout << *easyfind(deque, 30) << '\n';
 		}
 		catch(...)
 		{
