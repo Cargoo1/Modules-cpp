@@ -1,5 +1,5 @@
-SRCS = main.cpp Database.cpp
-INCLUDES = Database.hpp
+SRCS = main.cpp Database.cpp BitcoinExchange.cpp DbParser.cpp
+INCLUDES = Database.hpp IDataHandler.hpp Database.hpp BitcoinExchange.hpp DbParser.hpp
 C++ = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra -g3
 OBJS = ${SRCS:.cpp=.o}
