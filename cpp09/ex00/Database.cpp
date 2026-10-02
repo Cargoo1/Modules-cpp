@@ -6,11 +6,12 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:04:12 by acamargo          #+#    #+#             */
-/*   Updated: 2026/10/01 17:19:45 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/10/02 14:16:17 by alejandrocama    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Database.hpp"
+#include "DbParser.hpp"
 #include <cctype>
 #include <cmath>
 #include <cstddef>
@@ -54,10 +55,24 @@ bool	Database::handle_error(const char* msg)
 
 bool	Database::check_value(const std::string& value)
 {
-	float	n_value = std::strtof(value.c_str(), NULL);
+	bool	decimal_point = false;
+	for (std::string::const_iterator it = value.begin(); it != value.end(); ++it)
+	{
+		if (std::isdigit(*it))
+			continue;
+		else if (*it == '.' && !decimal_point)
+		{
+			decimal_point = true;
+			continue;
+		}
+		throw DbParser::ParseError("Error: invalid value");
+	}
+	float	n_value = std::atof(value.c_str());
+	if (std::isinf(n_value))
+		throw DbParser::ParseError("Error: Value too big");
 	int int_value = std::ceil(n_value);
 	if (int_value < 0)
-		throw DbParser::ParseError("Error: Negative value\n");
+		throw DbParser::ParseError("Error: Negative value");
 	return true;
 }
 
