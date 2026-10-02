@@ -6,7 +6,7 @@
 /*   By: alejandrocamargo <acamargo@student.42.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 16:17:37 by alejandrocama     #+#    #+#             */
-/*   Updated: 2026/10/01 17:14:50 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/10/02 13:43:23 by alejandrocama    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ bool	DbParser::check_date_format(IDataHandler& db_handler, const std::string& da
 		}
 		else if (std::isdigit(date.at(i)))
 			continue;
-		return db_handler.handle_error("Error: Invalid date\n");
+		return db_handler.handle_error("Error: Invalid date");
 	}
 	if (j < 2)
-		return db_handler.handle_error("Error: Invalid date\n");
+		return db_handler.handle_error("Error: Invalid date");
 	date_components[0] = std::atoi(date.substr(0, separations[0]).c_str());
 	date_components[1] = std::atoi(date.substr(separations[0] + 1, separations[1] - (separations[0] + 1)).c_str());
 	date_components[2] = std::atoi(date.substr(separations[1] + 1, std::string::npos).c_str());
@@ -66,7 +66,7 @@ bool	DbParser::check_date_format(IDataHandler& db_handler, const std::string& da
 	if ((date_components[0] < 0 || date_components[0] > (1900 + Tinfo->tm_year))
 		|| (date_components[1] < 0 || date_components[1] > 12)
 		|| (date_components[2] < 0 || date_components[2] > 31))
-		return db_handler.handle_error("Error: Invalid date\n");
+		return db_handler.handle_error("Error: Invalid date");
 	return true;
 }
 
@@ -92,7 +92,7 @@ void	DbParser::parse_db_file(IDataHandler& db_handler,
 			|| sep_pos == 0
 			|| sep_pos == line.length() - 1))
 		{
-			if (!db_handler.handle_error("Error: Bad format\n"))
+			if (!db_handler.handle_error("Error: Bad format"))
 				continue;
 		}
 		date = line.substr(0, sep_pos);
