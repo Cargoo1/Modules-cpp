@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 16:29:39 by acamargo          #+#    #+#             */
-/*   Updated: 2026/10/08 17:52:06 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/10/09 16:37:11 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 std::size_t		binary_search(int n, const std::vector<int>& sorted_v)
 {
 	std::size_t	l_idx = 0, r_idx, m_idx;
-	if (sorted_v.size() <= 1)
+	if (sorted_v.size() < 1)
 		return 0;
 	r_idx = sorted_v.size() - 1;
 	l_idx = 0;
@@ -30,13 +30,15 @@ std::size_t		binary_search(int n, const std::vector<int>& sorted_v)
 			else
 				r_idx = m_idx - 1;
 		}
-		else
+		else if (n > sorted_v.at(m_idx))
 		{
 			if (m_idx + 1 == sorted_v.size())
 				l_idx = m_idx;
 			else
 				l_idx = m_idx + 1;
 		}
+		else
+			return m_idx;
 	}
 	return r_idx;
 }
@@ -57,9 +59,9 @@ void	binary_insertion_sort(std::vector<int>&	v0)
 		else
 		{
 			if (temp_idx + 1 == v0.size())
-				v0.push_back(v0_cpy.at(temp_idx));
+				v0.push_back(v0_cpy.at(i));
 			else
-				v0.insert(v0.begin() + temp_idx + 1, v0_cpy.at(temp_idx));
+				v0.insert(v0.begin() + temp_idx + 1, v0_cpy.at(i));
 		}
 		i++;
 	}

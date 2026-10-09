@@ -1,5 +1,5 @@
-SRCS = main.cpp merge_sort.cpp binary_insertion_sort.cpp
-INCLUDES = sorts.hpp
+SRCS = main.cpp PmergeMe.cpp
+INCLUDES = sorts.hpp PmergeMe.hpp
 C++ = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra -g3
 OBJS = ${SRCS:.cpp=.o}
