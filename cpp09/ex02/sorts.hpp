@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 16:21:30 by acamargo          #+#    #+#             */
-/*   Updated: 2026/10/09 23:27:47 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/10/10 17:07:45 by alejandrocama    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ template<class T>
 std::size_t		binary_search_lower_bound(T element, const std::vector<T>& sorted_v, PmergeMe& pm, std::size_t limit)
 {
 	std::size_t	l_idx = 0, r_idx, m_idx;
-	if (sorted_v.size() < 1)
+	if (sorted_v.size() < 1 || limit == 0)
 		return 0;
 	r_idx = limit;
 	l_idx = 0;
@@ -84,7 +84,7 @@ std::size_t		binary_search_lower_bound(T element, const std::vector<T>& sorted_v
 }
 
 template<class T>
-void	binary_insertion_sort(std::vector<T>& v0, PmergeMe& pm, std::size_t limit)
+void	binary_insertion_sort(std::vector<T>& v0, PmergeMe& pm)
 {
 	if (v0.size() <= 1)
 		return;
@@ -123,6 +123,11 @@ void	merge_insertion_sort(std::vector<T> v0, PmergeMe& pm)
 	std::size_t	inserted_elements = 0;
 	std::size_t	erased_elements = 0;
 	std::vector<T>	v_main;
+	std::size_t	max_j;
+	if (v0.size() % 2 == 0)
+		max_j = v0.size() / 2;
+	else
+		max_j = (v0.size() / 2) + 1;
 	std::vector<T>	v_pend;
 	for (std::size_t i = 0; i != v_pairs.size(); ++i)
 		v_pend.push_back(v_pairs[i].b);
@@ -130,23 +135,45 @@ void	merge_insertion_sort(std::vector<T> v0, PmergeMe& pm)
 		v_pend.push_back(*(v0.end() -  1));
 	v_main.push_back(v_pend[0]);
 	v_pend.erase(v_pend.begin());
-	++comparations_budget, ++inserted_elements, ++erased_elements;
+	++comparations_budget;
 	for (std::size_t i = 0; i != v_pairs.size(); ++i)
 		v_main.push_back(v_pairs[i].a);
-	while (v_main.size() != v0.size())
+	bool		is_max_j_reached = false;
+	std::size_t	jacobstshal_sequence[2];
+	while (v_pend.size() != 0)
 	{
-		std::size_t	jacobstshal_n = get_jacobsthal_number(comparations_budget++) - 1;
-		std::size_t	second_element_2_insert = jacobstshal_n - 1;
-		std::size_t	temp_idx = 0;
-		if (jacobstshal_n >= v_pend.size())
+		if (!is_max_j_reached)
 		{
-			jacobstshal_n = v_pend.size() - 1;
-			while (v_pend.size() > 0)
+			jacobstshal_sequence[0] = get_jacobsthal_number(comparations_budget++);
+			if (jacobstshal_sequence[0] > max_j)
 			{
-				second_element_2_insert = jacobstshal_n - 1;
-				temp_idx = binary_search_lower_bound(v_pend[jacobstshal_n ], v0, pm);
-				v0.insert(v0.begin() + temp_idx, v0_cpy.at(i));
+				is_max_j_reached = true;
+				continue;
 			}
+		}
+		else
+		{
+			jacobstshal_sequence[0] = v_pend.size() - 1;
+			if (v_pend.size() == 1)
+				jacobstshal_sequence[1] = jacobstshal_sequence[0];
+		}
+		jacobstshal_sequence[1] = jacobstshal_sequence[0] - 1;
+		std::size_t	limit_idx = 0;
+		std::size_t	pend_idx = 0;
+		for (std::size_t i = 0; i != 2; ++i)
+		{
+			if (i == 1)
+				pend_idx = pend_idx - 1;
+			else
+				pend_idx = jacobstshal_sequence[i] - 2 - erased_elements;
+			if (pend_idx == pend_idx + 2 + erased_elements)
+				limit_idx = v_main.size() + 1;
+			else
+				limit_idx = jacobstshal_sequence[i] + inserted_elements;
+			std::size_t	temp_idx = binary_search_lower_bound(v_pend[pend_idx], v_main, pm, limit_idx);
+			v_main.insert(v_main.begin() + temp_idx, v_pend[pend_idx]);
+			v_pend.erase(v_pend.begin() + pend_idx);
+			++inserted_elements, ++erased_elements;
 		}
 	}
 }
