@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 16:21:58 by acamargo          #+#    #+#             */
-/*   Updated: 2026/10/09 20:38:51 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/10/10 16:53:17 by alejandrocama    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	std::vector<int>	v0(numbers, numbers + 11);
 	PmergeMe	pm;
 	merge_insertion_sort(v0, pm);
-	binary_insertion_sort(v0, pm);
+	//binary_insertion_sort(v0, pm);
 	display_vector(v0);
 	std::cout << pm.getNofComparations();
 	merge_sort(v0, pm);
