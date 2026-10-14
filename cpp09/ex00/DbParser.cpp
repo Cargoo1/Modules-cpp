@@ -6,13 +6,15 @@
 /*   By: alejandrocamargo <acamargo@student.42.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 16:17:37 by alejandrocama     #+#    #+#             */
-/*   Updated: 2026/10/02 13:43:23 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/10/14 17:24:58 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DbParser.hpp"
 #include "Database.hpp"
 #include "IDataHandler.hpp"
+#include <cstdlib>
+#include <ctime>
 #include <fstream>
 #include <iostream>
 
@@ -101,5 +103,4 @@ void	DbParser::parse_db_file(IDataHandler& db_handler,
 			continue;
 		db_handler.handle_data(date, value);
 	}
-
 }

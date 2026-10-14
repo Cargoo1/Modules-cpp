@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 16:21:30 by acamargo          #+#    #+#             */
-/*   Updated: 2026/10/11 22:04:46 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/10/12 22:07:38 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "PmergeMe.hpp"
 #include <cmath>
 #include <cstddef>
+#include <iterator>
 #include <ostream>
 #include <utility>
 #include <vector>
@@ -60,7 +61,7 @@ void	merge_sort(std::vector<T>& v0)
 }
 
 template<class T>
-std::size_t		binary_search_lower_bound(T element, const std::vector<T>& sorted_v, std::size_t limit)
+std::size_t		binary_search_lower_bound_vector(T element, const std::vector<T>& sorted_v, std::size_t limit)
 {
 	std::size_t	l_idx = 0, r_idx, m_idx;
 	if (sorted_v.size() < 1 || limit == 0)
@@ -84,6 +85,31 @@ std::size_t		binary_search_lower_bound(T element, const std::vector<T>& sorted_v
 	return r_idx;
 }
 
+std::size_t	calculate_forward_steps(PmergeMe::list_iterator first, PmergeMe::list_iterator last, PmergeMe::list_iterator end_limit);
+
+int calculate_backwards_steps(PmergeMe::list_iterator first, PmergeMe::list_iterator last, PmergeMe::list_iterator begin_limit);
+
+
+template<class T>
+PmergeMe::list_iterator	binary_search_lower_bound_list(T element, std::list<T>& sorted_list, PmergeMe::list_iterator& limit)
+{
+	PmergeMe::list_iterator l = sorted_list.begin(), r, m;
+	if (sorted_list.size() < 1 || limit == sorted_list.begin())
+		return l;
+	r = limit;
+	while (l != r)
+	{
+		m = l;
+		std::advance(m, calculate_forward_steps(l, r, sorted_list.end()) / 2);
+		if (element < *m)
+			std::advance(r, calculate_backwards_steps(r, m, sorted_list.begin()));
+		else
+			std::advance(l, calculate_forward_steps(l, m, sorted_list.end()) + 1);
+		++number_of_comparations;
+	}
+	return r;
+}
+
 template<class T>
 void	binary_insertion_sort(std::vector<T>& v0)
 {
@@ -95,7 +121,7 @@ void	binary_insertion_sort(std::vector<T>& v0)
 	std::size_t	i = 1, temp_idx;
 	while (i != v0_cpy.size())
 	{
-		temp_idx = binary_search_lower_bound(v0_cpy.at(i), v0);
+		temp_idx = binary_search_lower_bound_vector(v0_cpy.at(i), v0);
 		v0.insert(v0.begin() + temp_idx, v0_cpy.at(i));
 		i++;
 	}

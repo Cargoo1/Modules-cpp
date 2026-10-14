@@ -6,7 +6,7 @@
 /*   By: alejandrocamargo <acamargo@student.42.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 16:54:35 by alejandrocama     #+#    #+#             */
-/*   Updated: 2026/10/02 14:20:02 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/10/14 17:30:40 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,15 @@ bool	BitcoinExchange::handle_error(const char* msg)
 void	BitcoinExchange::handle_data(const std::string& key, const std::string& value)
 {
 	std::map<std::string, float>::const_iterator	it = this->_database.getDatabase().lower_bound(key);
+	if (it->first != key && it == this->_database.getDatabase().begin())
+	{
+		std::cerr << "Error: key not found\n";
+		return;
+	}
 	if (it == this->_database.getDatabase().end() || it->first != key)
+	{
 		--it;
+	}
 	float	temp = it->second * std::atof(value.c_str());
 	if (std::isinf(temp))
 	{
