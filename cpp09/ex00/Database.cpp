@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:04:12 by acamargo          #+#    #+#             */
-/*   Updated: 2026/10/02 14:16:17 by alejandrocama    ###   ########.fr       */
+/*   Updated: 2026/10/12 22:29:51 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "DbParser.hpp"
 #include <cctype>
 #include <cmath>
-#include <cstddef>
 #include <cstdlib>
 #include <ctime>
 #include <map>

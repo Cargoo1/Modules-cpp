@@ -6,7 +6,7 @@
 /*   By: acamargo <acamargo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 17:53:33 by acamargo          #+#    #+#             */
-/*   Updated: 2026/10/11 21:59:08 by acamargo         ###   ########.fr       */
+/*   Updated: 2026/10/12 20:18:38 by acamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,16 @@
 
 #include <cstddef>
 #include <list>
-#include <utility>
 #include <vector>
-#include "sorts.hpp"
+#include "Group.hpp"
 #include <string>
 
 extern int	number_of_comparations;
 
-struct	Group
-{
-	int		winner;
-	Group(int winner) : winner(winner){};
-	~Group(void){};
-	std::vector<Group>	pend;
-	bool	operator<(const Group& other) const;
-	bool	operator>(const Group& other) const;
-	Group&	operator=(const Group& othe);
-};
-
 class	PmergeMe
 {
 public:
+	typedef std::list<Group>::iterator list_iterator;
 	PmergeMe(void);
 	PmergeMe(const PmergeMe& other);
 	~PmergeMe(void);
@@ -42,11 +31,13 @@ public:
 	PmergeMe&	operator=(const PmergeMe& other);
 
 	void		merge_insertion_sort(std::vector<Group>& vector);
+	void		merge_insertion_sort(std::list<Group>& list);
 	std::size_t	get_jacobsthal_number(std::size_t k);
-	void		setVector(const std::vector<std::string>& str);
 
 private:
 	void	_insert_in_jacobsthal_sequence(std::vector<Group>& v_main, std::vector<Group>& v_pend,
+										std::size_t last_jacob, std::size_t current_jacob);
+	void	_insert_in_jacobsthal_sequence(std::list<Group>& l_main, std::list<Group>& l_pend,
 										std::size_t last_jacob, std::size_t current_jacob);
 
 	std::vector<int>	_vector;
